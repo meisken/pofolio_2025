@@ -37,7 +37,7 @@ const pageTransitionContext = createContext<PageTransitionProviderValue>(null);
 
 
 
-const AnimatePresenceWrapper: FC<Props> = ({children, pageTransitionType = "FullScreenSlide"}) => {
+const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType = "FullScreenSlide"}) => {
     const key = usePathname();
     const SmoothScrollContext = useSmoothScrollContext();
 
@@ -118,11 +118,11 @@ const AnimatePresenceWrapper: FC<Props> = ({children, pageTransitionType = "Full
     );
 };
 
-export default AnimatePresenceWrapper;
+export default AnimatePresenceContextProvider;
 
 const usePageTransitionContext = () => {
     if(!pageTransitionContext) {
-        console.warn("you might forgot to wrap AnimatePresenceWrapper")
+        console.warn("you might forgot to wrap AnimatePresenceContextProvider")
     }
     return useContext(pageTransitionContext)
 };
