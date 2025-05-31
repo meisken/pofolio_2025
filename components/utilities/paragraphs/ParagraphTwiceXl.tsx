@@ -1,0 +1,1 @@
+//acumin medium 24px lh 120% tracking-none

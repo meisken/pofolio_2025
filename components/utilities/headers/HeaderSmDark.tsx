@@ -1,0 +1,1 @@
+// Acumin Pro regular 18 lh 100% tracking-none opacity-70

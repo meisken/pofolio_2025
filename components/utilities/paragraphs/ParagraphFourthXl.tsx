@@ -1,0 +1,1 @@
+//acumin Semibold 42px tracking 0 lh 120%

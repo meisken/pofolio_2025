@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@import "./font.css";
+@import "./scollbar.css";
+
+body{
+    overflow-x: clip;
+}
