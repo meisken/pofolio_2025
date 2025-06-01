@@ -4,7 +4,8 @@ import ScrollTriggerRegisterWrapper from "@/lib/gsap/ScrollTriggerRegisterWrappe
 import SmoothScrollRegisterContextProvider from "@/lib/gsap/SmoothScrollRegisterContextProvider";
 import AnimatePresenceContextProvider from "@/lib/framerMotion/AnimatePresenceContextProvider";
 import { headers } from "next/headers";
-import { langQueryHeaderName } from "@/contents/supportedLanguages";
+import { langQueryHeaderName } from "@/contents/supportedLanguagesData";
+import FixedHeader from "@/components/header/FixedHeader";
 
 
 export const metadata: Metadata = {
@@ -22,9 +23,10 @@ export default async function RootLayout({
     return (
         <html lang={lang} >
             <body className="bg-black text-white">
+                <FixedHeader />
                 <ScrollTriggerRegisterWrapper>
                     <SmoothScrollRegisterContextProvider>
-                        <AnimatePresenceContextProvider>
+                        <AnimatePresenceContextProvider pageTransitionType="none">
                             {children}
                         </AnimatePresenceContextProvider>
                     </SmoothScrollRegisterContextProvider>
