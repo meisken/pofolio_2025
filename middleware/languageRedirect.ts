@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hasVisitedCookie } from "./hasVisitedCookie";
-import { langQueryHeaderName, supportedLanguages } from "@/contents/supportedLanguages";
+import { langQueryHeaderName, supportedLanguages } from "@/contents/supportedLanguagesData";
 
 export const languageRedirect =  (request: NextRequest) => {
 

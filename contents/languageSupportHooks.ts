@@ -2,7 +2,7 @@
 
 import { redirect, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { supportedLanguages, SupportedLanguages } from "./supportedLanguages";
+import { supportedLanguages, SupportedLanguages } from "./supportedLanguagesData";
 
 
 export const useCurrentLanguages = () => {
