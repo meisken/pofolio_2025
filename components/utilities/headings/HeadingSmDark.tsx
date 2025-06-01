@@ -10,12 +10,20 @@ interface Props{
     ref?: Ref<HTMLHeadingElement> | undefined
 }
 
-const HeaderSmDark: FC<Props> = ({children, ref, className, style}) => {
+const HeadingSmDark: FC<Props> = ({children, ref, className, style}) => {
     return (
         <h5 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-acumin
+                    font-normal
+                    [--heading-sm-dark-font-size:18px]
+                    text-[length:var(--heading-sm-dark-font-size)] 
+                    leading-[1]
+                    tracking-normal
+                    opacity-70
+                `,
                 className
             )}
             style={style}
@@ -25,4 +33,4 @@ const HeaderSmDark: FC<Props> = ({children, ref, className, style}) => {
     );
 };
 
-export default HeaderSmDark;
+export default HeadingSmDark;

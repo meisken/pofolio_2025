@@ -14,7 +14,14 @@ const HeadlineHero: FC<Props> = ({children, ref, className, style}) => {
         <h6 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-elza
+                    font-medium
+                    [--headline-hero-font-size:80px]
+                    text-[length:var(--headline-hero-font-size)] 
+                    leading-[1]
+                    tracking-normal
+                `,
                 className
             )}
             style={style}

@@ -9,12 +9,19 @@ interface Props{
     ref?: Ref<HTMLHeadingElement> | undefined
 }
 
-const HeaderThirdXl: FC<Props> = ({children, ref, className, style}) => {
+const HeadingThirdXl: FC<Props> = ({children, ref, className, style}) => {
     return (
         <h3 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-acumin-semi-cond
+                    font-bold
+                    [--heading-third-xl-font-size:28px]
+                    text-[length:var(--heading-third-xl-font-size)] 
+                    leading-[1]
+                    tracking-[calc(var(--heading-third-xl-font-size)*-0.02)]
+                `,
                 className
             )}
             style={style}
@@ -24,4 +31,4 @@ const HeaderThirdXl: FC<Props> = ({children, ref, className, style}) => {
     );
 };
 
-export default HeaderThirdXl;
+export default HeadingThirdXl;

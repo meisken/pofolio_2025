@@ -11,12 +11,19 @@ interface Props{
     ref?: Ref<HTMLHeadingElement> | undefined
 }
 
-const HeaderXsThick: FC<Props> = ({children, ref, className, style}) => {
+const HeadingXsThick: FC<Props> = ({children, ref, className, style}) => {
     return (
         <h6 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-elza
+                    font-medium
+                    [--heading-xs-thick-font-size:16px]
+                    text-[length:var(--heading-xs-thick-font-size)] 
+                    leading-[1]
+                    tracking-normal
+                `,
                 className
             )}
             style={style}
@@ -26,4 +33,4 @@ const HeaderXsThick: FC<Props> = ({children, ref, className, style}) => {
     );
 };
 
-export default HeaderXsThick;
+export default HeadingXsThick;

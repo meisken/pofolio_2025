@@ -9,12 +9,19 @@ interface Props{
     ref?: Ref<HTMLHeadingElement> | undefined
 }
 
-const HeaderFourthXl: FC<Props> = ({children, ref, className, style}) => {
+const HeadingFourthXl: FC<Props> = ({children, ref, className, style}) => {
     return (
         <h2 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-elza
+                    font-normal
+                    [--heading-fourth-xl-font-size:32px]
+                    text-[length:var(--heading-fourth-xl-font-size)] 
+                    leading-[1]
+                    tracking-normal
+                `,
                 className
             )}
             style={style}
@@ -24,4 +31,4 @@ const HeaderFourthXl: FC<Props> = ({children, ref, className, style}) => {
     );
 };
 
-export default HeaderFourthXl;
+export default HeadingFourthXl;

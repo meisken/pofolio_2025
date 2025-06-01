@@ -10,12 +10,19 @@ interface Props{
     ref?: Ref<HTMLHeadingElement> | undefined
 }
 
-const HeaderSm: FC<Props> = ({children, ref, className, style}) => {
+const HeadingSm: FC<Props> = ({children, ref, className, style}) => {
     return (
         <h5 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-elza
+                    font-normal
+                    [--heading-sm-font-size:18px]
+                    text-[length:var(--heading-sm-font-size)] 
+                    leading-[1]
+                    tracking-normal
+                `,
                 className
             )}
             style={style}
@@ -25,4 +32,4 @@ const HeaderSm: FC<Props> = ({children, ref, className, style}) => {
     );
 };
 
-export default HeaderSm;
+export default HeadingSm;

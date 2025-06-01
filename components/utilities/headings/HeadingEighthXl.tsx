@@ -10,12 +10,20 @@ interface Props{
     ref?: Ref<HTMLHeadingElement> | undefined
 }
 
-const HeaderEighthXl: FC<Props> = ({children, ref, className, style}) => {
+const HeadingEighthXl: FC<Props> = ({children, ref, className, style}) => {
     return (
         <h1 
             ref={ref}
             className={cn(
-                ``,
+                `
+                    font-elza
+                    font-normal
+                    [--heading-eighth-xl-font-size:90px]
+                    text-[length:var(--heading-eighth-xl-font-size)] 
+                    leading-[1.1]
+                    tracking-normal
+
+                `,
                 className
             )}
             style={style}
@@ -25,4 +33,4 @@ const HeaderEighthXl: FC<Props> = ({children, ref, className, style}) => {
     );
 };
 
-export default HeaderEighthXl;
+export default HeadingEighthXl;
