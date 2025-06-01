@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { langQueryHeaderName, langUrlQueryName, SupportedLanguages, supportedLanguages, userLastVisitLanguageCookiesName } from "@/contents/supportedLanguagesData";
+import { defaultLang, langQueryHeaderName, langUrlQueryName, supportedLanguages, userLastVisitLanguageCookiesName } from "@/contents/supportedLanguagesData";
 
 
 
 export const languageRedirect =  (request: NextRequest) => {
 
-    const defaultLang: SupportedLanguages = "en";
+    
     const url = request.nextUrl.clone();
     
 
