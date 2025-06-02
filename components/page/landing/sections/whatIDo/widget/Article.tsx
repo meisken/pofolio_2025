@@ -38,7 +38,7 @@ const Article: FC = () => {
             </div>
             
             <div className='flex flex-col h-fit gap-4'>
-                <HeadingSmDark>{landingContents[lang]['what-i-do']['3d-hover-card'].caption}</HeadingSmDark>
+                <HeadingSmDark>{landingContents[lang]['what-i-do']['image-parallax'].caption}</HeadingSmDark>
                 <div className='w-[608px] aspect-[608/760] overflow-hidden relative'>
                     <Image 
                         src={landingContents[lang]['what-i-do']['image-parallax'].imgSrc}
