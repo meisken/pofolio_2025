@@ -121,7 +121,7 @@ export const landingContents: LandingContents = {
             "parallax-scrolling":{
                 caption: "There are many more techniques I can develop, such as parallax scrolling.",
                 description: "Parallax scrolling a trending web design technique   to add depth and visual interest to the design. It creates a dynamic experience that keeps users engaged.",
-                imgSrcs: ["/assets/lennon-cheng-yAeUPmbyS-0-unsplash.jpg","pexels-nicholas-garman-2492577-4107723.jpg","pexels-iriser-1083807.jpg"]
+                imgSrcs: ["/assets/lennon-cheng-yAeUPmbyS-0-unsplash.jpg","/assets/pexels-nicholas-garman-2492577-4107723.jpg","/assets/pexels-iriser-1083807.jpg"]
             }
         },
         "full-screen-transition": {
@@ -218,7 +218,7 @@ export const landingContents: LandingContents = {
             "parallax-scrolling":{
                 caption: "There are many more techniques I can develop, such as parallax scrolling.",
                 description: "Parallax scrolling a trending web design technique   to add depth and visual interest to the design. It creates a dynamic experience that keeps users engaged.",
-                imgSrcs: ["/assets/lennon-cheng-yAeUPmbyS-0-unsplash.jpg","pexels-nicholas-garman-2492577-4107723.jpg","pexels-iriser-1083807.jpg"]
+                imgSrcs: ["/assets/lennon-cheng-yAeUPmbyS-0-unsplash.jpg","/assets/pexels-nicholas-garman-2492577-4107723.jpg","/assets/pexels-iriser-1083807.jpg"]
             }
         },
         "full-screen-transition": {
