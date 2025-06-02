@@ -3,7 +3,7 @@ import { SupportedLanguages } from "./supportedLanguagesData"
 
 export type LandingContents = Record<SupportedLanguages,{
         hero: {
-            headline: [string,string],
+            headline: [string,string,string],
             description: string,
             backgroundVideo: {
                 videoSrc: string
@@ -101,8 +101,8 @@ export type LandingContents = Record<SupportedLanguages,{
 export const landingContents: LandingContents = {
     "en": {
         hero: {
-            headline: ["modern","aesthetics"],
-            description: "I’m a web developer and designer transform ideas into stunning digital experiences, build modern, visually appealing, clean websites.",
+            headline: ["make it","creative","innovative"],
+            description: "I’m Ken, a web developer and designer who build modern, visually appealing and clean websites.",
             backgroundVideo: {
                 videoSrc: "/assets/background.mp4"
             }
@@ -198,7 +198,7 @@ export const landingContents: LandingContents = {
     
     "zh": {
         hero: {
-            headline: ["modern","aesthetics"],
+            headline: ["modern","aesthetics","asd"],
             description: "I’m a web developer and designer transform ideas into stunning digital experiences, build modern, visually appealing, clean websites.",
             backgroundVideo: {
                 videoSrc: "/assets/background.mp4"
