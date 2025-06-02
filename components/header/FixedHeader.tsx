@@ -4,6 +4,7 @@ import Logo from './widget/Logo';
 import LanguageToggle from './widget/LanguageToggle';
 import HamburgerMenu from './widget/HamburgerMenu';
 import NavMenu from './widget/NavMenu';
+import SpacingLgContainer from '../utilities/containers/SpacingLgContainer';
 
 
 
@@ -17,21 +18,21 @@ const FixedHeader: FC = () => {
                 left-0  
                 right-0
                 py-12
-                px-16
                 z-30
                 flex
-                justify-between
                 items-center
             '
         >
-            <div>
-                <Logo />
-            </div>
-            <div className='flex items-center gap-6'>
-                <LanguageToggle />
-                <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
-            </div>
-            <NavMenu navMenuActive={navMenuActive} />
+            <SpacingLgContainer className='flex justify-between'>
+                <div>
+                    <Logo />
+                </div>
+                <div className='flex items-center gap-6'>
+                    <LanguageToggle />
+                    <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
+                </div>
+                <NavMenu navMenuActive={navMenuActive} />
+            </SpacingLgContainer>
         </header>
     );
 };
