@@ -10,7 +10,7 @@ export type LandingContents = Record<SupportedLanguages,{
             }
         },
         "what-i-do": {
-            header: string,
+            heading: string,
             description: string,
             "3d-hover-card": {
                 caption: string,
@@ -27,11 +27,11 @@ export type LandingContents = Record<SupportedLanguages,{
             }
         },
         "full-screen-transition": {
-            header: [string,string],
+            heading: [string,string],
             imgSrcs: [string,string]
         },
         "projects": {
-            header: string,
+            heading: string,
             description: string,
             projects: [
                 {
@@ -53,7 +53,7 @@ export type LandingContents = Record<SupportedLanguages,{
             ],
         },
         "services": {
-            header: string,
+            heading: string,
             description: string,
             services: [
                 {
@@ -75,7 +75,7 @@ export type LandingContents = Record<SupportedLanguages,{
             ]
         },
         "get-in-touch": {
-            header: string,
+            heading: string,
             contacts: [
                 {
                     type: string,
@@ -108,7 +108,7 @@ export const landingContents: LandingContents = {
             }
         },
         "what-i-do": {
-            header: "What i do",
+            heading: "What i do",
             description: "I creates memorable websites with smooth animations and interactive experiences.",
             "3d-hover-card": {
                 caption: "3D card hover effect",
@@ -125,11 +125,11 @@ export const landingContents: LandingContents = {
             }
         },
         "full-screen-transition": {
-            header: ["Full screen","transition"],
+            heading: ["Full screen","transition"],
             imgSrcs: ["/assets/pexels-cottonbro-8721339.jpg","/assets/pexels-cottonbro-8721318.jpg"]
         },
         "projects": {
-            header: "Projects",
+            heading: "Projects",
             description: "I worked on these projects as both a developer and designer, writing code to build them while designing in Figma.",
             projects: [
                 {
@@ -151,7 +151,7 @@ export const landingContents: LandingContents = {
             ],
         },
         "services": {
-            header: "Services",
+            heading: "Services",
             description: "I offer a range of services focused on web solutions—whether it's brand building or work automation",
             services: [
                 {
@@ -173,7 +173,7 @@ export const landingContents: LandingContents = {
             ]
         },
         "get-in-touch": {
-            header: "Get in touch",
+            heading: "Get in touch",
             contacts: [
                 {
                     type: "email",
@@ -205,7 +205,7 @@ export const landingContents: LandingContents = {
             }
         },
         "what-i-do": {
-            header: "What i do",
+            heading: "What i do",
             description: "I creates memorable websites with smooth animations and interactive experiences.",
             "3d-hover-card": {
                 caption: "3D card hover effect",
@@ -222,11 +222,11 @@ export const landingContents: LandingContents = {
             }
         },
         "full-screen-transition": {
-            header: ["Full screen","transition"],
+            heading: ["Full screen","transition"],
             imgSrcs: ["/assets/pexels-cottonbro-8721339.jpg","/assets/pexels-cottonbro-8721318.jpg"]
         },
         "projects": {
-            header: "Projects",
+            heading: "Projects",
             description: "I worked on these projects as both a developer and designer, writing code to build them while designing in Figma.",
             projects: [
                 {
@@ -248,7 +248,7 @@ export const landingContents: LandingContents = {
             ],
         },
         "services": {
-            header: "Services",
+            heading: "Services",
             description: "I offer a range of services focused on web solutions—whether it's brand building or work automation",
             services: [
                 {
@@ -270,7 +270,7 @@ export const landingContents: LandingContents = {
             ]
         },
         "get-in-touch": {
-            header: "Get in touch",
+            heading: "Get in touch",
             contacts: [
                 {
                     type: "email",
