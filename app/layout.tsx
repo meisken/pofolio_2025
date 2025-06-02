@@ -22,7 +22,7 @@ export default async function RootLayout({
     const lang = headerList.get(langQueryHeaderName) ?? "en";
     return (
         <html lang={lang} >
-            <body className="bg-black text-white">
+            <body>
                 <FixedHeader />
                 <ScrollTriggerRegisterWrapper>
                     <SmoothScrollRegisterContextProvider>

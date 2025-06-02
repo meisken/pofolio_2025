@@ -4,6 +4,13 @@
 @import "./font.css";
 @import "./scollbar.css";
 
+:root{
+    --primary-color: #201C8C;
+    --secondary-color: #874AD8;
+}
 body{
     overflow-x: clip;
+    background-color: black;
+    color: white;
+    width: 100%;
 }
