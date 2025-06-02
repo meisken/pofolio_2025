@@ -28,7 +28,9 @@ module.exports = {
         "noto-sans-hk": ["Noto Sans HK", "sans-serif"]
       },
       colors: {
-        
+        primary: "var(--primary-color)",
+        secondary: "var(--secondary-color)",
+        "primary-dark": "var(--primary-dark-color)"
       },
     },
 

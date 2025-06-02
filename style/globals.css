@@ -7,6 +7,7 @@
 :root{
     --primary-color: #201C8C;
     --secondary-color: #874AD8;
+    --primary-dark-color: #0F0740;
 }
 body{
     overflow-x: clip;
