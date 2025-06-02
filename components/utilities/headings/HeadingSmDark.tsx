@@ -16,6 +16,7 @@ const HeadingSmDark: FC<Props> = ({children, ref, className, style}) => {
             ref={ref}
             className={cn(
                 `
+                    uppercase
                     font-acumin
                     font-normal
                     [--heading-sm-dark-font-size:18px]
