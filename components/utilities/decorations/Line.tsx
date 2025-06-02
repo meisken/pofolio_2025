@@ -9,7 +9,7 @@ interface Props{
 
 const Line: FC<Props> = ({className,ref,style}) => {
     return (
-        <div className={cn('bg-secondary h-[2px] w-full',className)} style={style} ref={ref}></div>
+        <div className={cn('bg-secondary h-[5px] w-full',className)} style={style} ref={ref}></div>
     );
 };
 
