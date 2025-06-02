@@ -5,10 +5,11 @@ import { useEffect } from "react";
 import { defaultLang, langUrlQueryName, supportedLanguages, SupportedLanguages } from "./supportedLanguagesData";
 
 
-export const useCurrentLanguages = () => {
+export const useCurrentLanguages: () => SupportedLanguages = () => {
     const searchParams = useSearchParams();
     const currentLanguage = searchParams.get(langUrlQueryName);
-    return currentLanguage;
+    const isCurrentLanguageSupported = currentLanguage !== null && supportedLanguages.some((language => language === currentLanguage));
+    return (isCurrentLanguageSupported ? currentLanguage : defaultLang) as SupportedLanguages; 
 }
 
 export const UseClientSideLanguageRedirect: () => SupportedLanguages = () => {

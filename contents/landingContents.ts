@@ -1,6 +1,104 @@
+import { SupportedLanguages } from "./supportedLanguagesData"
 
 
-export const landingContents = {
+export type LandingContents = Record<SupportedLanguages,{
+        hero: {
+            headline: [string,string],
+            description: string,
+            backgroundVideo: {
+                videoSrc: string
+            }
+        },
+        "what-i-do": {
+            header: string,
+            description: string,
+            "3d-hover-card": {
+                caption: string,
+                imgSrc: string
+            },
+            "image-parallax": {
+                caption: string,
+                imgSrc: string
+            },
+            "parallax-scrolling":{
+                caption: string,
+                description: string,
+                imgSrcs: [string,string,string]
+            }
+        },
+        "full-screen-transition": {
+            header: [string,string],
+            imgSrcs: [string,string]
+        },
+        "projects": {
+            header: string,
+            description: string,
+            projects: [
+                {
+                    videoSrc: string,
+                    description: string
+                },
+                {
+                    videoSrc: string,
+                    description: string
+                },
+                {
+                    videoSrc: string,
+                    description: string
+                },
+                {
+                    videoSrc: string,
+                    description: string
+                }
+            ],
+        },
+        "services": {
+            header: string,
+            description: string,
+            services: [
+                {
+                    caption: string,
+                    description: string
+                },
+                {
+                    caption: string,
+                    description: string
+                },
+                {
+                    caption: string,
+                    description: string
+                },
+                {
+                    caption: string,
+                    description: string
+                },
+            ]
+        },
+        "get-in-touch": {
+            header: string,
+            contacts: [
+                {
+                    type: string,
+                    contact: string
+                },
+                {
+                    type: string,
+                    contact: string
+                },
+                {
+                    type: string,
+                    contact: string
+                }
+            ]
+        },
+        "custom-mouse": {
+            "scroll": string,
+            "hover": string
+        },
+        "lets-talk-button": string
+}>
+
+export const landingContents: LandingContents = {
     "en": {
         hero: {
             headline: ["modern","aesthetics"],
@@ -194,4 +292,4 @@ export const landingContents = {
         },
         "lets-talk-button": "Let’s Talk"
     }
-}
+} as const
