@@ -2,6 +2,11 @@
 
 import { FC } from 'react'
 import Hero from './sections/hero/Hero';
+import WhatIDo from './sections/whatIDo/WhatIDo';
+import FullScreenTransition from './sections/fullScreenTransition/FullScreenTransition';
+import Projects from './sections/projects/Projects';
+import Services from './sections/services/Services';
+import GetInTouch from './sections/getInTouch/GetInTouch';
 
 
 const Landing: FC = ({}) => {
@@ -29,11 +34,15 @@ const Landing: FC = ({}) => {
     return (
         <main
     
-            className={"flex flex-col w-full "}
+            className={"flex flex-col w-full pb-20"}
 
         >   
             <Hero />
-
+            <WhatIDo />
+            <FullScreenTransition />
+            <Projects />
+            <Services />
+            <GetInTouch />
         </main>
     );
 };
