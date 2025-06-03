@@ -1,4 +1,4 @@
-import { CSSProperties, FC, Ref } from 'react'
+import { CSSProperties, FC, ReactNode, Ref } from 'react'
 import HeadingEighthXl from '../headings/HeadingEighthXl';
 import ParagraphFourthXl from '../paragraphs/ParagraphFourthXl';
 import { cn } from '@/lib/tailwind/cn';
@@ -6,7 +6,7 @@ import Line from '../decorations/Line';
 
 interface Props{
     title?: string,
-    description?: string,
+    description?: string | ReactNode,
 
     className?: string,
     style?: CSSProperties,
