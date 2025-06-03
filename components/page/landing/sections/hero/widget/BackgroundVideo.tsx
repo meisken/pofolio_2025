@@ -8,7 +8,7 @@ const BackgroundVideo: FC = () => {
             <video className="w-full h-full object-cover" autoPlay muted loop playsInline >
                 <source  src='/assets/background.mp4' type='video/mp4' />
             </video>
-            <div className='absolute bottom-0 left-0 right-0 h-[23.6%]' style={{backgroundImage:"linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))"}}></div>
+            <div className='absolute bottom-[-1px] left-0 right-0 h-[23.6%]' style={{backgroundImage:"linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))"}}></div>
         </div>
     );
 };
