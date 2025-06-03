@@ -23,7 +23,7 @@ const Article: FC = () => {
                     <ThreeDHoverCard
                         className='w-[575px] h-[368px]'
                     >
-                        <div className='bg-[#151718]' style={{boxShadow: "0px 0px 16px 16px rgba(0, 0, 0, 0.15)"}}>
+                        <div className='bg-[#151718] rounded-[4px]' style={{boxShadow: "0px 0px 16px 16px rgba(0, 0, 0, 0.15)"}}>
                             <Image 
                                 src={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
                                 alt={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
