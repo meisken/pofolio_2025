@@ -2,6 +2,7 @@ import { FC } from 'react'
 import HeadingThirdXl from '../headings/HeadingThirdXl';
 import ParagraphBase from '../paragraphs/ParagraphBase';
 import Image from 'next/image';
+import Arrow from '../svg/Arrow';
 
 interface Props{
     index?: string,
@@ -12,7 +13,7 @@ interface Props{
 
 const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType}) => {
     return (
-        <div className='flex flex-col text-black w-full'>
+        <div className='flex flex-col text-black w-full relative'>
             <div className='aspect-[720/384] w-full relative '>
                 {
                     mediaSrc === "" ? (<></>) : (
@@ -28,7 +29,7 @@ const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType}) => {
                                 muted
                                 playsInline
                                 src={mediaSrc}
-                       
+                                
                                 className='w-full h-full object-cover'
                             />
                         )
@@ -40,6 +41,9 @@ const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType}) => {
                 <ParagraphBase className='max-w-[465px]'>
                     {description}
                 </ParagraphBase>
+            </div>
+            <div className='absolute right-0 top-0 mt-6 mr-6'>
+                <Arrow />
             </div>
         </div>
     );
