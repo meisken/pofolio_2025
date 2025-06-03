@@ -20,7 +20,7 @@ const ParagraphFourthXl: FC<Props> = ({children, ref, className, style}) => {
                     font-semibold
                     [--paragraph-fourth-xl-font-size:42px]
                     text-[length:var(--paragraph-fourth-xl-font-size)] 
-                    leading-[1.2]
+                    leading-[1.1]
                     tracking-[0]
                 `,
                 className
