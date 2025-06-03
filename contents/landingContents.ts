@@ -35,18 +35,22 @@ export type LandingContents = Record<SupportedLanguages,{
             description: string,
             projects: [
                 {
+                    caption: string
                     videoSrc: string,
                     description: string
                 },
                 {
+                    caption: string
                     videoSrc: string,
                     description: string
                 },
                 {
+                    caption: string
                     videoSrc: string,
                     description: string
                 },
                 {
+                    caption: string
                     videoSrc: string,
                     description: string
                 }
@@ -133,18 +137,22 @@ export const landingContents: LandingContents = {
             description: "I worked on these projects as both a developer and designer, writing code to build them while designing in Figma.",
             projects: [
                 {
+                    caption: "Portfolio V1",
                     videoSrc: "",
                     description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation."
                 },
                 {
+                    caption: "how moons slow retreat earth",
                     videoSrc: "",
                     description: "Here's the project I worked for South China Morning Post: HK. It's a storytelling page with image sequence and a mobile first design"
                 },
                 {
+                    caption: "HALL OF FAME",
                     videoSrc: "",
                     description: "Here’s a historical website with a 3D animation, but presented with image sequence. And 4 page for each hero stories with a lot of scroll animation."
                 },
                 {
+                    caption: "Todo calendar web app",
                     videoSrc: "",
                     description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design "
                 }
@@ -229,19 +237,23 @@ export const landingContents: LandingContents = {
             heading: "Projects",
             description: "I worked on these projects as both a developer and designer, writing code to build them while designing in Figma.",
             projects: [
-                {
+               {
+                    caption: "Portfolio V1",
                     videoSrc: "",
                     description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation."
                 },
                 {
+                    caption: "how moons slow retreat earth",
                     videoSrc: "",
                     description: "Here's the project I worked for South China Morning Post: HK. It's a storytelling page with image sequence and a mobile first design"
                 },
                 {
+                    caption: "HALL OF FAME",
                     videoSrc: "",
                     description: "Here’s a historical website with a 3D animation, but presented with image sequence. And 4 page for each hero stories with a lot of scroll animation."
                 },
                 {
+                    caption: "Todo calendar web app",
                     videoSrc: "",
                     description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design "
                 }
