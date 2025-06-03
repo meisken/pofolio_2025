@@ -93,7 +93,8 @@ export type LandingContents = Record<SupportedLanguages,{
                     type: string,
                     contact: string
                 }
-            ]
+            ],
+            "hand-image-src": string
         },
         "custom-mouse": {
             "scroll": string,
@@ -195,7 +196,8 @@ export const landingContents: LandingContents = {
                     type: "upwork",
                     contact: "Ken Tang"
                 }
-            ]
+            ],
+            "hand-image-src": "/assets/hand.PNG"
         },
         "custom-mouse": {
             "scroll": "scroll down",
@@ -295,8 +297,10 @@ export const landingContents: LandingContents = {
                 {
                     type: "upwork",
                     contact: "Ken Tang"
-                }
-            ]
+                },
+                
+            ],
+            "hand-image-src": "/assets/hand.PNG"
         },
         "custom-mouse": {
             "scroll": "scroll down",
