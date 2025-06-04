@@ -7,40 +7,44 @@ import { PageTransitionProps } from './types/PageTransitionProps'
 
 
 
-const slideInVariants: Variants = {
-    initial: { 
-        scaleY: 0
-    },
-    // animate: { 
-    //    scaleY: 0
-    // },
-    exit: { 
-        scaleY: 1,
-        transition: {
-            duration: 0.75,
-            ease: [0.33, 1, 0.68, 1]
-        }
-    },
-}
 
-const slideOutVariants: Variants = {
+
+
+const slidesVariants: Variants = {
      initial: { 
-        scaleY: 1
+        y: "100%"
     },
     // animate: { 
     //      scaleY: 1
     // },
     exit: { 
-        scaleY: 0,
+        y: ["100%","0%","0%","-100%"],
         transition: {
-            duration: 0.75,
-            delay: 0.75,
-            ease: [0.33, 1, 0.68, 1]
+            duration: 1.5,
+            ease: [0.33, 1, 0.68, 1],
+            times: [0, 0.4,0.6, 1]
         }
     },
 
 }
 
+const outVariants: Variants = {
+     initial: { 
+        clipPath: "inset(0% 0% 0% 0%)",
+    },
+    // animate: { 
+    //      scaleY: 1
+    // },
+    exit: { 
+        clipPath: ["inset(0% 0% 0% 0%)","inset(0% 0% 0% 0%)","inset(0% 0% 101% 0%)","inset(0% 0% 101% 0%)"],
+        transition: {
+            duration: 1.5,
+            ease: [0.33, 1, 0.68, 1],
+            times: [0, 0.4,0.9, 1]
+        }
+    },
+
+}
 const anim = (variants: Variants) => {
     return {
         initial: "initial",
@@ -51,27 +55,38 @@ const anim = (variants: Variants) => {
 }
 
 const FullScreenSlideTransition: FC<PageTransitionProps> = ({children, onAnimationStart = () => {}, onAnimationEnd = () => {}}) => {
-
+    
 
     return (
         <>
-
+         
+          
             <motion.div 
-                onAnimationComplete={onAnimationEnd}
-                {...anim(slideOutVariants)}
-                className='fixed top-0 left-0 right-0 w-screen h-screen pointer-events-none  z-10 origin-top'
+            
+                className='fixed top-0 left-0 right-0 w-screen h-screen pointer-events-none overflow-clip z-50 '
             >
-
                 <motion.div
-                    {...anim(slideInVariants)}
                     onAnimationStart={onAnimationStart}
-                
-                    className='absolute inset-0 bg-black origin-bottom'
-                ></motion.div>
+                    onAnimationComplete={onAnimationEnd}
+                    {...anim(slidesVariants)}
+                    className='bg-white w-screen h-screen'
+                >
+
+                </motion.div>
+
             </motion.div>
+        
+
+                
+
        
-      
-            {children}
+            <motion.div
+                {...anim(outVariants)}
+                className='w-full'
+            >
+                {children}
+            </motion.div>
+            
          
 
         </>

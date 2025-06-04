@@ -21,17 +21,18 @@ export const metadata: Metadata = {
 export default async function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: React.ReactNode; 
 }>) {
     const headerList = await headers();
     const lang = headerList.get(langQueryHeaderName) ?? "en";
     return (
         <html lang={lang} >
             <body>
-                <FixedHeader />
+                
                 <ScrollTriggerRegisterWrapper>
                     <SmoothScrollRegisterContextProvider>
-                        <AnimatePresenceContextProvider pageTransitionType="none">
+                        <FixedHeader />
+                        <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
                             {children}
                         </AnimatePresenceContextProvider>
                     </SmoothScrollRegisterContextProvider>
