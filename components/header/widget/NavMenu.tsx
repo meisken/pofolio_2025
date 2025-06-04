@@ -38,37 +38,40 @@ const NavMenu: FC<Props> = ({navMenuActive}) => {
                     routes.map(({name,path}) => {
                         const isActive = pathname === path || (pathname.startsWith(path) && path !== "/");
                         return (
-                            <Link 
-                                key={`${name}${path}`} 
-                                href={path}
-                                className='sm:w-full sm:inline-block'
-                            >
+                          
                                 <li 
-                                    className={
-                                        cn(
-                                            `
-                                                py-[10px] 
-                                                px-[22px] 
-                                                rounded-[25px] 
-                                                sm:text-center 
-                                                sm:rounded-none
-                                                sm:py-[32px]
-                                                sm:px-0
-                                                sm:uppercase
-                                            `,
-                                            {
-                                                "bg-primary" : isActive,
-                                                "sm:bg-black" : !isActive
-                                            }
-                                        )
-                                    }
+                                    key={`${name}${path}`} 
+                                    className='sm:w-full sm:inline-block'
+        
                                 >
-                                    <HeadingSm>
-                                        {name}
-                                    </HeadingSm>
-                                    
+                                    <Link 
+                                        href={path}
+                                        className={
+                                            cn(
+                                                `
+                                                    inline-block
+                                                    py-[10px] 
+                                                    px-[22px] 
+                                                    rounded-[25px] 
+                                                    sm:text-center 
+                                                    sm:rounded-none
+                                                    sm:py-[32px]
+                                                    sm:px-0
+                                                    sm:uppercase
+                                                `,
+                                                {
+                                                    "bg-primary" : isActive,
+                                                    "sm:bg-black" : !isActive
+                                                }
+                                            )
+                                        }
+                                    >
+                                        <HeadingSm>
+                                            {name}
+                                        </HeadingSm>
+                                    </Link>
                                 </li>
-                            </Link>
+                            
                         )
                     })
                 }

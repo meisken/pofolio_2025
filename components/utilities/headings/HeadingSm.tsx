@@ -12,7 +12,7 @@ interface Props{
 
 const HeadingSm: FC<Props> = ({children, ref, className, style}) => {
     return (
-        <h5 
+        <h1 
             ref={ref}
             className={cn(
                 `
@@ -28,7 +28,7 @@ const HeadingSm: FC<Props> = ({children, ref, className, style}) => {
             style={style}
         >
             {children}
-        </h5>
+        </h1>
     );
 };
 

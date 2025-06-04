@@ -13,7 +13,7 @@ interface Props{
 
 const HeadingXsThick: FC<Props> = ({children, ref, className, style}) => {
     return (
-        <h6 
+        <h3 
             ref={ref}
             className={cn(
                 `
@@ -29,7 +29,7 @@ const HeadingXsThick: FC<Props> = ({children, ref, className, style}) => {
             style={style}
         >
             {children}
-        </h6>
+        </h3>
     );
 };
 

@@ -12,7 +12,7 @@ interface Props{
 
 const HeadingSmDark: FC<Props> = ({children, ref, className, style}) => {
     return (
-        <h5 
+        <h2 
             ref={ref}
             className={cn(
                 `
@@ -30,7 +30,7 @@ const HeadingSmDark: FC<Props> = ({children, ref, className, style}) => {
             style={style}
         >
             {children}
-        </h5>
+        </h2>
     );
 };
 

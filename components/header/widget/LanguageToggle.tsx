@@ -56,11 +56,17 @@ const LanguageToggle: FC = () => {
                 {
                     supportedLanguages.map((lang,i) => {
                         return (
-                            <Link key={`${lang}-${i}`} href={`/?${langUrlQueryName}=${lang}`} onClick={(e) => handleLinkOnClick(e,lang)}>
-                                <li 
+                            <li 
+                                key={`${lang}-${i}`} 
+                        
+                            >
+                                <Link 
+                                    href={`/?${langUrlQueryName}=${lang}`} 
+                                    onClick={(e) => handleLinkOnClick(e,lang)}
                                     className={
                                         cn(
                                             `
+                                                inline-block
                                                 px-[14.25px] 
                                                 py-[10px]
                                                 bg-black
@@ -78,9 +84,11 @@ const LanguageToggle: FC = () => {
                                     <HeadingXsThick>
                                         {lang}
                                     </HeadingXsThick>
-                                    
-                                </li>
-                            </Link>
+                                </Link>
+                            
+                                
+                            </li>
+                        
                         )
                     })
                 }
