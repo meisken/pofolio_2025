@@ -66,14 +66,14 @@ const BookmarkTransition: FC<PageTransitionProps> = ({children, onAnimationStart
         <div className="bg-black">
 
             <motion.div 
-                className='fixed top-0 left-0 right-0 h-[100dvh] pointer-events-none overflow-clip z-10'
+                className='fixed top-0 left-0 right-0 h-[100calc(var(--dvh)*100)] pointer-events-none overflow-clip z-10'
             >
 
                 <motion.div
                     {...anim(slideVariants)}
                     onAnimationStart={onAnimationStart}
                     onAnimationComplete={onAnimationEnd}
-                    className='absolute  left-0 right-0  w-screen h-[100dvh] bg-white'
+                    className='absolute  left-0 right-0  w-screen h-[100calc(var(--dvh)*100)] bg-white'
                 ></motion.div>
 
             </motion.div>

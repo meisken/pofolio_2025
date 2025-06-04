@@ -8,10 +8,18 @@
     --primary-color: #201C8C;
     --secondary-color: #874AD8;
     --primary-dark-color: #0F0740;
+    --dvh: 1vh;
 }
 body{
     overflow-x: clip;
     background-color: black;
     color: white;
     width: 100%;
+}
+@supports (width: 100dvh) {
+
+    :root{
+        --dvh: 1dvh;
+    }
+    
 }
