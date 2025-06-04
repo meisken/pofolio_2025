@@ -29,7 +29,6 @@ const ScrollingParallax: FC = () => {
                     <Image 
                         src={landingContents[lang]['what-i-do']['parallax-scrolling'].imgSrcs[0]}
                         alt={landingContents[lang]['what-i-do']['parallax-scrolling'].imgSrcs[0]}
-                        objectFit='cover'
                         fill
                         className=' object-[0%_50%] object-cover'
                     />
@@ -52,7 +51,6 @@ const ScrollingParallax: FC = () => {
                     <Image 
                         src={landingContents[lang]['what-i-do']['parallax-scrolling'].imgSrcs[1]}
                         alt={landingContents[lang]['what-i-do']['parallax-scrolling'].imgSrcs[1]}
-                        objectFit='cover'
                         fill
                         className=' object-[0%_50%] object-cover'
                     />
@@ -76,7 +74,6 @@ const ScrollingParallax: FC = () => {
                         <Image 
                             src={landingContents[lang]['what-i-do']['parallax-scrolling'].imgSrcs[2]}
                             alt={landingContents[lang]['what-i-do']['parallax-scrolling'].imgSrcs[2]}
-                            objectFit='cover'
                             fill
                             className='object-[0%_50%] object-cover'
                         />

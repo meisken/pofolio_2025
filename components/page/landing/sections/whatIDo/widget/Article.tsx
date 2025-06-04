@@ -30,7 +30,6 @@ const Article: FC = () => {
                                 <Image 
                                     src={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
                                     alt={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
-                                    objectFit='cover'
                                     width={1274}
                                     height={826}
                                     className='w-full object-cover'
@@ -54,7 +53,6 @@ const Article: FC = () => {
                         <Image 
                             src={landingContents[lang]['what-i-do']['image-parallax'].imgSrc}
                             alt={landingContents[lang]['what-i-do']['image-parallax'].imgSrc}
-                            objectFit='cover'
                             fill
                             className='object-[0%_50%] object-cover'
                         />

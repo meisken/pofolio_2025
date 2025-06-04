@@ -13,23 +13,20 @@ const BackgroundImages: FC = () => {
             <Image 
                 src={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                 alt={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
-                objectFit='cover'
                 fill
-                className=' grayscale-100 z-[3]'
+                className=' grayscale-100 z-[3] object-cover'
             />
             <Image 
                 src={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                 alt={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
-                objectFit='cover'
                 fill
-                className='z-[2]'
+                className='z-[2] object-cover'
             />
             <Image 
                 src={landingContents[lang]['full-screen-transition'].imgSrcs[1]}
                 alt={landingContents[lang]['full-screen-transition'].imgSrcs[1]}
-                objectFit='cover'
                 fill
-                className='z-[1]'
+                className='z-[1] object-cover'
             />
         </div>
     );

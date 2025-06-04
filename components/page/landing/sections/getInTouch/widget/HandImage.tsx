@@ -31,7 +31,7 @@ const HandImage: FC= () => {
         >
             <Image 
                 fill
-                objectFit='cover'
+                className='object-cover'
                 src={landingContents[lang]['get-in-touch']['hand-image-src']}
                 alt={landingContents[lang]['get-in-touch']['hand-image-src']}
             />

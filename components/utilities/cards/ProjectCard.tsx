@@ -22,7 +22,7 @@ const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType}) => {
                                 src={mediaSrc}
                                 alt={mediaSrc}
                                 fill
-                                objectFit='cover'
+                                className='object-cover'
                             />
                         ) : (
                             <video 
