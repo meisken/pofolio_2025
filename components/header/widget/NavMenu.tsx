@@ -1,23 +1,33 @@
+"use client"
 import HeadingSm from '@/components/utilities/headings/HeadingSm';
 import { cn } from '@/lib/tailwind/cn';
 import { routes } from '@/routes/routes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props{
-    navMenuActive: boolean
+    navMenuActive: boolean,
+    SetNavMenuActive: Dispatch<SetStateAction<boolean>>
 }
 
-const NavMenu: FC<Props> = ({navMenuActive}) => {
+const NavMenu: FC<Props> = ({navMenuActive,SetNavMenuActive}) => {
     const pathname = usePathname();
     return (
         <nav 
-            className='absolute inset-0 z-[-1] pointer-events-auto sm:bottom-auto' 
+            className={
+                cn(
+                    'absolute inset-0 z-[-1] pointer-events-auto sm:bottom-auto  sm:h-[calc(var(--dvh)*100)] sm:bg-primary-dark',
+                    {
+                        "translate-y-0 sm:translate-x-0" : navMenuActive,
+                        "-translate-y-full sm:translate-y-0 sm:translate-x-full": !navMenuActive
+                    } 
+                )
+            }
             style={{
-                backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
-                transform: `translateY(${navMenuActive ? '0%' : '-100%'})`,
-                transition: "transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)"
+            
+          
+                transition: "all 0.6s cubic-bezier(0.33, 1, 0.68, 1)"
             }}
         >
             <ul 
@@ -31,7 +41,6 @@ const NavMenu: FC<Props> = ({navMenuActive}) => {
                     sm:flex-col 
                     sm:w-full 
                     sm:gap-0
-                    sm:shadow-[0px_4px_16px_16px_rgba(0,0,0,0.5)]
                 '
             >
                 {
@@ -46,29 +55,48 @@ const NavMenu: FC<Props> = ({navMenuActive}) => {
                                 >
                                     <Link 
                                         href={path}
+                                        onClick={() => {SetNavMenuActive(false)}}
                                         className={
                                             cn(
                                                 `
                                                     inline-block
-                                                    py-[10px] 
-                                                    px-[22px] 
-                                                    rounded-[25px] 
+                                                    
+                                                    mx-[22px] 
+
                                                     sm:text-center 
-                                                    sm:rounded-none
+                                                    sm:flex
+                                                    sm:justify-center
                                                     sm:py-[32px]
-                                                    sm:px-0
+                                                    sm:w-full
+                                                    sm:mx-0
                                                     sm:uppercase
-                                                `,
-                                                {
-                                                    "bg-primary" : isActive,
-                                                    "sm:bg-black" : !isActive
-                                                }
+                                                    
+                                                `
+                                                
                                             )
                                         }
+                                        style={{
+                                            transition: "background-color 0.3s linear"
+                                        }}
                                     >
-                                        <HeadingSm>
+                                        <HeadingSm className='relative w-fit'>
                                             {name}
+                                            {
+                                                isActive ? (
+                                                    <div
+                                                        className='
+                                                            absolute
+                                                            top-full
+                                                            left-[-1px]
+                                                            right-[-1px]
+                                                            h-[2px]
+                                                            bg-secondary
+                                                        '
+                                                    ></div>
+                                                ) : (<></>)
+                                            }
                                         </HeadingSm>
+                                    
                                     </Link>
                                 </li>
                             

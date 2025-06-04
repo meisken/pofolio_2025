@@ -32,7 +32,7 @@ const FixedHeader: FC = () => {
                     <LanguageToggle />
                     <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
                 </div>
-                <NavMenu navMenuActive={navMenuActive} />
+                <NavMenu navMenuActive={navMenuActive} SetNavMenuActive={SetNavMenuActive} />
             </SpacingLgContainer>
         </header>
     );

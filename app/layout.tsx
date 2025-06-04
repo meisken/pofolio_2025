@@ -28,10 +28,9 @@ export default async function RootLayout({
     return (
         <html lang={lang} >
             <body>
-                
+                <FixedHeader />
                 <ScrollTriggerRegisterWrapper>
                     <SmoothScrollRegisterContextProvider>
-                        <FixedHeader />
                         <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
                             {children}
                         </AnimatePresenceContextProvider>
