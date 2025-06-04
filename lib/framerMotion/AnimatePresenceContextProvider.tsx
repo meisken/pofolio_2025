@@ -3,13 +3,12 @@ import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.sha
 import { createContext, FC, ReactNode, useContext, useRef, useState } from 'react'
 import { AnimatePresence } from "framer-motion"
 import { usePathname } from 'next/navigation';
-import BookmarkTransition from './pageTransitions/BookmarkTransition';
 import { useSmoothScrollContext } from '../gsap/SmoothScrollRegisterContextProvider';
 import NoneTransition from './pageTransitions/NoneTransition';
 import { PageTransitionProps } from './pageTransitions/types/PageTransitionProps';
 import FullScreenSlideTransition from './pageTransitions/FullScreenSlideTransition';
 
-export type PageTransitionType = "none" | "bookmark" | "FullScreenSlide"
+export type PageTransitionType = "none" | "FullScreenSlide"
 interface Props{
     children: ReactNode,
     pageTransitionType?: PageTransitionType,
@@ -18,18 +17,18 @@ interface Props{
 type Mode =  "sync" | "popLayout" | "wait" | undefined;
 
 function FrozenRouter(props: { children: React.ReactNode }) {
-  const context = useContext(LayoutRouterContext ?? {});
-  const frozen = useRef(context).current;
+    const context = useContext(LayoutRouterContext ?? {});
+    const frozen = useRef(context).current;
 
-  return (
-    <LayoutRouterContext.Provider value={frozen}>
-      {props.children}
-    </LayoutRouterContext.Provider>
-  );
+    return (
+        <LayoutRouterContext.Provider value={frozen}>
+            {props.children}
+        </LayoutRouterContext.Provider>
+    );
 
 }
 
-export type PageTransitionEventTypes = "animationEnd" | "exitComplete"
+export type PageTransitionEventTypes = "animationEnd" | "exitComplete" | "animationStart"
 export type RegisterAnimationEvent = (eventType: PageTransitionEventTypes, callback: (() => void)[]) => (number[]);
 
 type PageTransitionProviderValue = {
@@ -45,6 +44,7 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
     const SmoothScrollContext = useSmoothScrollContext();
 
     const disableScrolling = () => {
+        console.log("start")
         if(SmoothScrollContext){
             SmoothScrollContext.scrollTo(0, false)
         }
@@ -52,6 +52,7 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
         document.body.style.overflowX = "clip"
     }
 
+    const [onAnimationStartCallbacks, setOnAnimationStartCallbacks] = useState<(() => void)[]>([]);
     const [onAnimationEndCallbacks, setOnAnimationEndCallbacks] = useState<(() => void)[]>([]);
     const [onExitCompleteCallbacks, setOnExitCompleteCallbacks] = useState<(() => void)[]>([]);
 
@@ -65,7 +66,14 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
             callback()
         });
     }
+    const onAnimationStart = () => {
+        disableScrolling()
+        onAnimationStartCallbacks.forEach((callback) => {
+            callback()
+        });
+    }
     const onAnimationEnd = () => {
+        enableScrolling();
         onAnimationEndCallbacks.forEach((callback) => {
             callback()
         });
@@ -76,6 +84,16 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
         if(pageTransitionType === "none"){
             console.warn("pageTransitionType is none, any page transition events won't work")
             return callbackIndex
+        }
+        if(eventType === "animationStart"){
+            setOnAnimationStartCallbacks((old) => {
+                for(const callback of callbacks){
+                    old.push(callback);
+                    callbackIndex.push(old.length - 1);
+                }
+             
+                return old
+            })
         }
         if(eventType === "animationEnd"){
             setOnAnimationEndCallbacks((old) => {
@@ -105,14 +123,13 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
     
     const PageTransitionComponents: Record<PageTransitionType, FC<PageTransitionProps>> = {
         "none": NoneTransition,
-        "bookmark": BookmarkTransition,
         "FullScreenSlide": FullScreenSlideTransition
     };
     const PageTransitionComponent = PageTransitionComponents[pageTransitionType];
 
     return (
         <AnimatePresence mode={mode} onExitComplete={onExitComplete} >
-            <PageTransitionComponent key={key} onAnimationStart={disableScrolling} onAnimationEnd={onAnimationEnd} >
+            <PageTransitionComponent key={key} onAnimationStart={onAnimationStart} onAnimationEnd={onAnimationEnd} >
                 <pageTransitionContext.Provider value={providerValue}>
                     <FrozenRouter>{children}</FrozenRouter>
                 </pageTransitionContext.Provider>
