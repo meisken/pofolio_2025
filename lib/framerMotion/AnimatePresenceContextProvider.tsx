@@ -12,8 +12,11 @@ import FullScreenSlideTransition from './pageTransitions/FullScreenSlideTransiti
 export type PageTransitionType = "none" | "bookmark" | "FullScreenSlide"
 interface Props{
     children: ReactNode,
-    pageTransitionType?: PageTransitionType
+    pageTransitionType?: PageTransitionType,
+    mode?: Mode
 }
+type Mode =  "sync" | "popLayout" | "wait" | undefined;
+
 function FrozenRouter(props: { children: React.ReactNode }) {
   const context = useContext(LayoutRouterContext ?? {});
   const frozen = useRef(context).current;
@@ -37,7 +40,7 @@ const pageTransitionContext = createContext<PageTransitionProviderValue>(null);
 
 
 
-const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType = "FullScreenSlide"}) => {
+const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType = "FullScreenSlide", mode}) => {
     const key = usePathname();
     const SmoothScrollContext = useSmoothScrollContext();
 
@@ -108,7 +111,7 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
     const PageTransitionComponent = PageTransitionComponents[pageTransitionType];
 
     return (
-        <AnimatePresence mode="sync" onExitComplete={onExitComplete} >
+        <AnimatePresence mode={mode} onExitComplete={onExitComplete} >
             <PageTransitionComponent key={key} onAnimationStart={disableScrolling} onAnimationEnd={onAnimationEnd} >
                 <pageTransitionContext.Provider value={providerValue}>
                     <FrozenRouter>{children}</FrozenRouter>
