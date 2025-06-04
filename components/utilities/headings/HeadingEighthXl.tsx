@@ -18,7 +18,8 @@ const HeadingEighthXl: FC<Props> = ({children, ref, className, style}) => {
                 `
                     font-elza
                     font-normal
-                    [--heading-eighth-xl-font-size:90px]
+                    [--heading-eighth-xl-font-size:clamp(64px,calc(((100vw-1024px)/896*26)+64px),90px)]
+                    lg:[--heading-eighth-xl-font-size:clamp(48px,calc(((100vw-360px)/664*16)+48px),64px)]
                     text-[length:var(--heading-eighth-xl-font-size)] 
                     leading-[1.1]
                     tracking-normal

@@ -11,7 +11,22 @@ interface Props{
 
 const SectionContainer: FC<Props> = ({children,className,ref,style}) => {
     return (
-        <section className={cn('px-32 mt-32 w-full',className)} ref={ref} style={style}>
+        <section 
+            className={
+                cn(
+                    `
+                        px-[clamp(40px,calc(((100vw-1024px)/896*88)+40px),128px)]
+                        lg:px-[clamp(16px,calc(((100vw-360px)/664*24)+16px),40px)]
+                        mt-32 
+                        lg:mt-20
+                        w-full
+                    `,
+                    className
+                )
+            } 
+            ref={ref} 
+            style={style}
+        >
             {children}
         </section>
     );

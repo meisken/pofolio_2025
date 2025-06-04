@@ -6,7 +6,7 @@ import ServiceList from './widget/ServiceList';
 
 const Services: FC = () => {
     return (
-        <SectionContainer className='flex flex-col gap-20'>
+        <SectionContainer className='flex flex-col gap-[clamp(64px,calc(((100vw-768px)/1152*32)+48px),80px)]'>
             <Article />
             <ServiceList />
         </SectionContainer>

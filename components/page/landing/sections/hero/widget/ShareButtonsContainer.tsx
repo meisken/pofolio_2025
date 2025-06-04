@@ -14,7 +14,18 @@ const ShareButtonsContainer: FC = () => {
     const url = useUrl();
      const lang = useCurrentLanguages();
     return (
-        <SpacingLgContainer className='absolute bottom-0 left-0 right-0 pb-12 flex justify-between'>
+        <SpacingLgContainer 
+            className='
+                absolute 
+                bottom-0 
+                left-0 
+                right-0 
+                pb-[clamp(32px,calc(((100vw-1024px)/896*16)+32px),48px)] 
+                flex 
+                justify-between
+                portrait:static
+            '
+        >
             <UnderlineButton>{landingContents[lang]['lets-talk-button']}</UnderlineButton>
             <div className='flex gap-10'>
                 <FacebookShareButton url={url ?? ""} />

@@ -125,7 +125,7 @@ export const landingContents: LandingContents = {
             },
             "parallax-scrolling":{
                 caption: "There are many more techniques I can develop, such as parallax scrolling.",
-                description: "Parallax scrolling a trending web design technique   to add depth and visual interest to the design. It creates a dynamic experience that keeps users engaged.",
+                description: "Parallax scrolling a trending web design technique to add depth and visual interest to the design. It creates a dynamic experience that keeps users engaged.",
                 imgSrcs: ["/assets/lennon-cheng-yAeUPmbyS-0-unsplash.jpg","/assets/pexels-nicholas-garman-2492577-4107723.jpg","/assets/pexels-iriser-1083807.jpg"]
             }
         },
@@ -145,12 +145,12 @@ export const landingContents: LandingContents = {
                 {
                     caption: "how moons slow retreat earth",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here's the project I worked for South China Morning Post: HK. It's a storytelling page with image sequence and a mobile first design"
+                    description: "Here's the project I worked for South China Morning Post: HK, a storytelling page with image sequence and a mobile first design"
                 },
                 {
                     caption: "HALL OF FAME",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a historical website with a 3D animation, but presented with image sequence. And 4 page for each hero stories with a lot of scroll animation."
+                    description: "Here’s a historical website with a 3D animation. And 4 unique pages for each hero stories with a lot of scroll animations."
                 },
                 {
                     caption: "Todo calendar web app",

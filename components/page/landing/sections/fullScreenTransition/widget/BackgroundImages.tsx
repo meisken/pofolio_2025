@@ -9,7 +9,7 @@ const BackgroundImages: FC = () => {
     const lang = useCurrentLanguages();
     
     return (
-        <div className='w-full h-full relative z-[-1]'>
+        <div className='w-full h-full relative z-[-1] portrait:h-auto portrait:aspect-video'>
             <Image 
                 src={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                 alt={landingContents[lang]['full-screen-transition'].imgSrcs[0]}

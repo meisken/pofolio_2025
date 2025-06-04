@@ -6,7 +6,7 @@ import HandImage from './widget/HandImage';
 
 const GetInTouch: FC= () => {
     return (
-        <SectionContainer className='flex justify-between relative'>
+        <SectionContainer className='relative '>
             <Article />
             <HandImage />
         </SectionContainer>

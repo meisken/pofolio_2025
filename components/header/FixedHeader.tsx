@@ -17,17 +17,18 @@ const FixedHeader: FC = () => {
                 top-0 
                 left-0  
                 right-0
-                py-12
+                py-[clamp(32px,calc(((100vw-1024px)/896*16)+32px),48px)]
                 z-30
                 flex
                 items-center
+                pointer-events-none
             '
         >
             <SpacingLgContainer className='flex justify-between'>
                 <div>
                     <Logo />
                 </div>
-                <div className='flex items-center gap-6'>
+                <div className='flex items-center gap-6 pointer-events-auto'>
                     <LanguageToggle />
                     <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
                 </div>

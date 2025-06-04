@@ -18,6 +18,7 @@ const ParagraphBase: FC<Props> = ({children, ref, className, style}) => {
                     font-acumin
                     font-normal
                     [--paragraph-base-font-size:18px]
+                    sm:[--paragraph-base-font-size:16px]
                     text-[length:var(--paragraph-base-font-size)] 
                     leading-[1]
                     tracking-normal

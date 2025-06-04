@@ -8,21 +8,21 @@ import { FC } from 'react'
 const Article: FC = () => {
     const lang = useCurrentLanguages();
     return (
-        <div className='flex flex-col gap-20'>
+        <div className='flex flex-col gap-20 '>
             <ArticleContainer 
                 title={landingContents[lang]['get-in-touch'].heading}
                 description={(
-                    <ul className='flex flex-col'>
+                    <span className='flex flex-col '>
                         {
                             landingContents[lang]['get-in-touch'].contacts.map(({contact,type}, i) => {
                                 return (
-                                    <li key={`${contact}-${i}`}>
+                                    <span key={`${contact}-${i}`} className='text-nowrap'>
                                         <span className='opacity-70'>{`${type}:`} </span>{contact}
-                                    </li>
+                                    </span>
                                 )
                             })
                         }
-                    </ul>
+                    </span>
                 )}
             />
             <div className='w-fit'>

@@ -9,7 +9,7 @@ import { FC } from 'react'
 const Heading: FC = () => {
     const lang = useCurrentLanguages();
     return (
-        <SpacingLgContainer className='absolute left-0 bottom-0 pb-20'>
+        <SpacingLgContainer className='absolute left-0 bottom-0 pb-20 portrait:static '>
             <HeadingEighthXl className='flex flex-col'>
                 <span>{landingContents[lang]['full-screen-transition'].heading[0]}</span>
                 <span>{landingContents[lang]['full-screen-transition'].heading[1]}</span>

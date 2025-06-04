@@ -19,7 +19,7 @@ const HeadingSmDark: FC<Props> = ({children, ref, className, style}) => {
                     uppercase
                     font-acumin
                     font-normal
-                    [--heading-sm-dark-font-size:18px]
+                    [--heading-sm-dark-font-size:clamp(16px,calc(((100vw-1024px)/896*2)+16px),18px)]
                     text-[length:var(--heading-sm-dark-font-size)] 
                     leading-[1]
                     tracking-normal

@@ -19,9 +19,13 @@ const ParagraphBaseRelax: FC<Props> = ({children, ref, className, style}) => {
                     font-acumin
                     font-normal
                     [--paragraph-base-relax-font-size:18px]
+                    
                     text-[length:var(--paragraph-base-relax-font-size)] 
-                    leading-[1.3]
+                    leading-[1.45]
                     tracking-[calc(var(--paragraph-base-relax-font-size)*0.025)]
+                    sm:[--paragraph-base-relax-font-size:16px]
+                    sm:leading-[1.4]
+                    sm:tracking-[calc(var(--paragraph-base-relax-font-size)*0.03)]
                 `,
                 className
             )}

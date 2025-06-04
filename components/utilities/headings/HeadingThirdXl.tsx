@@ -17,7 +17,7 @@ const HeadingThirdXl: FC<Props> = ({children, ref, className, style}) => {
                 `
                     font-acumin-semi-cond
                     font-bold
-                    [--heading-third-xl-font-size:28px]
+                    [--heading-third-xl-font-size:clamp(24px,calc(((100vw-1024px)/896*4)+24px),28px)]
                     text-[length:var(--heading-third-xl-font-size)] 
                     leading-[1]
                     tracking-[calc(var(--heading-third-xl-font-size)*-0.02)]

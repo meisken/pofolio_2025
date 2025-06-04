@@ -20,7 +20,7 @@ const HeadingSm: FC<Props> = ({children, ref, className, style}) => {
                     font-normal
                     [--heading-sm-font-size:18px]
                     text-[length:var(--heading-sm-font-size)] 
-                    leading-[1]
+                    leading-[1.3]
                     tracking-normal
                 `,
                 className

@@ -18,7 +18,8 @@ const ParagraphFourthXl: FC<Props> = ({children, ref, className, style}) => {
                 `
                     font-acumin
                     font-semibold
-                    [--paragraph-fourth-xl-font-size:42px]
+                    [--paragraph-fourth-xl-font-size:clamp(30px,calc(((100vw-1024px)/896*12)+30px),42px)]
+                    lg:[--paragraph-fourth-xl-font-size:clamp(24px,calc(((100vw-360px)/664*6)+24px),30px)]
                     text-[length:var(--paragraph-fourth-xl-font-size)] 
                     leading-[1.1]
                     tracking-[0]
