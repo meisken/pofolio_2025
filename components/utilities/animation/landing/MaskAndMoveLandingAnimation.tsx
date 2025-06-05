@@ -19,26 +19,26 @@ const getStylesMap: {[key in RevealDirection]: {
             return `translateY(-${displacement}%)`
 
         },
-        clipPath: (clipPathDepth) => `inset(${clipPathDepth}% 0 0 0)`,
+        clipPath: (clipPathDepth) => `inset(${clipPathDepth}% 0% 0% 0%)`,
     },
     "top": {
         transform: (displacement) => {
             return `translateY(${displacement}%)`
 
         },
-        clipPath: (clipPathDepth) => `inset(0 0 ${clipPathDepth}% 0)`,
+        clipPath: (clipPathDepth) => `inset(0% 0% ${clipPathDepth}% 0%)`,
     },
     "left": {
         transform: (displacement) => {
             return `translateX(${displacement}%)`
         },
-        clipPath: (clipPathDepth) => `inset(0 ${clipPathDepth}% 0 0)`,
+        clipPath: (clipPathDepth) => `inset(0% ${clipPathDepth}% 0% 0%)`,
     },
     "right": {
         transform: (displacement) => {
             return `translateX(-${displacement}%)`
         },
-        clipPath: (clipPathDepth) => `inset(0 0 0 ${clipPathDepth}%)`,
+        clipPath: (clipPathDepth) => `inset(0% 0% 0% ${clipPathDepth}%)`,
     },
 }
 
