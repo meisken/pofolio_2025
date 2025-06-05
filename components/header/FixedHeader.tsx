@@ -5,13 +5,15 @@ import LanguageToggle from './widget/LanguageToggle';
 import HamburgerMenu from './widget/HamburgerMenu';
 import NavMenu from './widget/NavMenu';
 import SpacingLgContainer from '../utilities/containers/SpacingLgContainer';
+import { motion } from "framer-motion"
+import { getZoomAndFadeAnimationAttributes } from '@/lib/framerMotion/landingAnimations/ZoomAndFadeVariants';
 
 
 
 const FixedHeader: FC = () => {
     const [navMenuActive,SetNavMenuActive] = useState(false);
     return (
-        <header
+        <motion.header
             className='
                 fixed 
                 top-0 
@@ -23,18 +25,33 @@ const FixedHeader: FC = () => {
                 items-center
                 pointer-events-none
             '
+            {...getZoomAndFadeAnimationAttributes({
+                scale: {
+                    from: 1.025,
+                    to: 1
+                },
+                transition: {
+                    delay: 1.9,
+                    duration: 1.2
+                }
+            })}
         >
             <SpacingLgContainer className='flex justify-between'>
-                <div>
+            
                     <Logo />
-                </div>
-                <div className='flex items-center gap-6 pointer-events-auto'>
+            
+                <div 
+                    className='flex items-center gap-6 pointer-events-auto'
+                >
                     <LanguageToggle />
                     <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
                 </div>
+
+
                 <NavMenu navMenuActive={navMenuActive} SetNavMenuActive={SetNavMenuActive} />
+           
             </SpacingLgContainer>
-        </header>
+        </motion.header>
     );
 };
 
