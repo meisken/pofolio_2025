@@ -105,9 +105,7 @@ export const shareToSocialMedia = <T extends SocialMediaNames>(shareLinkType: T,
                 redirect_uri: redirect_url || link,
                 app_id,
                 to,
-            })
-            console.log('https://www.facebook.com/dialog/send' + urlParams);
-            
+            })  
             return 'https://www.facebook.com/dialog/send' + urlParams
         },
         whatsapp: (params: ShareLinkParameters[T]) => {

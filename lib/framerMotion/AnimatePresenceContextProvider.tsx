@@ -52,7 +52,6 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
     });
     
     const disableScrolling = () => {
-        console.log("start")
         if(SmoothScrollContext){
             SmoothScrollContext.scrollTo(0, false)
         }
