@@ -17,7 +17,7 @@ const slidesVariants: Variants = {
     animate: { 
         y: ["100%","0%","0%","-100%"],
         transition: {
-            duration: 1.5,
+            duration: 1.2,
             ease: [0.33, 1, 0.68, 1],
             times: [0, 0.4,0.6, 1]
         }
@@ -25,7 +25,7 @@ const slidesVariants: Variants = {
     exit: { 
         y: ["100%","0%","0%","-100%"],
         transition: {
-            duration: 1.5,
+            duration: 1.2,
             ease: [0.33, 1, 0.68, 1],
             times: [0, 0.4,0.6, 1]
         }
@@ -40,7 +40,7 @@ const outVariants: Variants = {
     animate: { 
     
         transition: {
-            duration: 1.5,
+            duration: 1.2,
             ease: [0.33, 1, 0.68, 1],
             times: [0, 0.4,0.9, 1]
         }
@@ -48,7 +48,7 @@ const outVariants: Variants = {
     exit: { 
         clipPath: ["inset(0% 0% 0% 0%)","inset(0% 0% 0% 0%)","inset(0% 0% 101% 0%)","inset(0% 0% 101% 0%)"],
         transition: {
-            duration: 1.5,
+            duration: 1.2,
             ease: [0.33, 1, 0.68, 1],
             times: [0, 0.4,0.9, 1]
         }
