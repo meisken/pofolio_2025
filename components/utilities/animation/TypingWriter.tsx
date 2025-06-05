@@ -7,92 +7,103 @@ interface Props{
     typingSpeed?: number,
     beforeNextLineDelay?: number,
     startingDelay?: number,
-    infinite?: boolean
+    infinite?: boolean,
+    defaultText?: string
 }
-const TypingWriter: FC<Props> = ({text:textProps,onAnimationEnd = () => {},typingSpeed = 115,beforeNextLineDelay = 500,startingDelay = 0,infinite = true}) => {
 
+const textAnimation = (
+    text: string,
+    typingSpeed: number,
+    delay: number,
+    setText: React.Dispatch<React.SetStateAction<string>>,
+    currentTextOutput: string
+) => {
+    const animationend = new Promise<void>((resolve) => {
+        const chars = text.split('');
+        
+        const currentChars: string[] = currentTextOutput.split('');//store   
+        let charsIndex = currentChars.length > 0 ? currentChars.length : 0;
 
-    const [textOutput,setTextOutput] = useState('');
-
-
-    const textAnimation = (text: string,typingSpeed: number,delay: number,setText: React.Dispatch<React.SetStateAction<string>>) => {
-        const animationend = new Promise<void>((resolve) => {
-            const chars = text.split('');
-            let charsIndex = 0;
-            const currentChars: string[] = [];//store   
+        const timer = setInterval(() => {
     
-            const timer = setInterval(() => {
-       
-                if(charsIndex > chars.length){
-                    setTimeout(() => {
-                    
-                    
-                        const deleteText = setInterval(() => {
-                        
-                            if(currentChars.length == 0){
-
-                                
-                  
-                                resolve();
-                    
-                                clearInterval(deleteText);
-                            }
-                            currentChars.pop();
-                            setText(currentChars.join(''));
-                        },typingSpeed / 2)
-
-                    },delay);
-
-                    clearInterval(timer);
-
-                    
-                    return
-                }//stop it when the animation is finished
-       
-                currentChars.push(chars[charsIndex]);
-                setText(currentChars.join(''));
-                charsIndex++;
+            if(charsIndex > chars.length){
+                setTimeout(() => {
                 
-            }, typingSpeed);//every 115ms push a word into currentChars then combine to string and output
-        })
-        return animationend
-      
-    }
+                
+                    const deleteText = setInterval(() => {
+                    
+                        if(currentChars.length == 0){
 
+                            
+                
+                            resolve();
+                
+                            clearInterval(deleteText);
+                        }
+                        currentChars.pop();
+                        setText(currentChars.join(''));
+                    },typingSpeed / 2)
 
+                },delay);
+
+                clearInterval(timer);
+
+                
+                return
+            }//stop it when the animation is finished
+    
+            currentChars.push(chars[charsIndex]);
+            setText(currentChars.join(''));
+            charsIndex++;
+            
+        }, typingSpeed);//every 115ms push a word into currentChars then combine to string and output
+    })
+    return animationend
+    
+}
+
+const TypingWriter: FC<Props> = ({
+    text:textProps,
+    onAnimationEnd = () => {},
+    typingSpeed = 115,
+    beforeNextLineDelay = 500,
+    startingDelay = 0,
+    infinite = true, 
+    defaultText = ""
+}) => {
+
+    const [textOutput,setTextOutput] = useState(defaultText);
     const [currentTextIndex,setCurrentTextIndex] = useState(0);
     const [startDelay,setStartDelay] = useState(startingDelay);
 
-    useEffect(() => {
-        
+    const runTextAnimation = () => {
         const currentText = Array.isArray(textProps) ? textProps[currentTextIndex] : textProps; 
-
- 
-
         setTimeout(() => {
-            textAnimation(currentText,typingSpeed,beforeNextLineDelay,setTextOutput).then(() => {
+            
+            textAnimation(currentText,typingSpeed,beforeNextLineDelay,setTextOutput,textOutput).then(() => {
+
+                setStartDelay(0);
+
                 if(currentTextIndex < textProps.length - 1 && Array.isArray(textProps) ){    
-                    
                     setCurrentTextIndex(currentTextIndex + 1);
                 }
+
                 if(currentTextIndex === textProps.length - 1){
-                    setStartDelay(0);
+                    
                     if(infinite){
                         setCurrentTextIndex(0);
                     }
                     if(onAnimationEnd){
-                        
                         onAnimationEnd();
-
                     }
                     
                 }
             });
         },startDelay)
+    }
 
-
-
-
+    useEffect(() => {
+        runTextAnimation();
     },[currentTextIndex]);
 
 
