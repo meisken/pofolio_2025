@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../style/globals.css";
-import ScrollTriggerRegisterWrapper from "@/lib/gsap/ScrollTriggerRegisterWrapper";
+import GsapPluginRegisterWrapper from "@/lib/gsap/GsapPluginRegisterWrapper";
 import SmoothScrollRegisterContextProvider from "@/lib/gsap/SmoothScrollRegisterContextProvider";
 import AnimatePresenceContextProvider from "@/lib/framerMotion/AnimatePresenceContextProvider";
 import { headers } from "next/headers";
@@ -29,13 +29,13 @@ export default async function RootLayout({
         <html lang={lang} >
             <body>
                 <FixedHeader />
-                <ScrollTriggerRegisterWrapper>
+                <GsapPluginRegisterWrapper>
                     <SmoothScrollRegisterContextProvider>
                         <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
                             {children}
                         </AnimatePresenceContextProvider>
                     </SmoothScrollRegisterContextProvider>
-                </ScrollTriggerRegisterWrapper>
+                </GsapPluginRegisterWrapper>
             </body>
         </html>
     );
