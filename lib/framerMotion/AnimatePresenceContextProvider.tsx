@@ -1,6 +1,6 @@
 'use client';
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { createContext, FC, ReactNode, useContext, useRef, useState } from 'react'
+import { createContext, FC, ReactNode, useContext, useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from "framer-motion"
 import { usePathname } from 'next/navigation';
 import { useSmoothScrollContext } from '../gsap/SmoothScrollRegisterContextProvider';
@@ -28,8 +28,9 @@ function FrozenRouter(props: { children: React.ReactNode }) {
 
 }
 
-export type PageTransitionEventTypes = "animationEnd" | "exitComplete" | "animationStart"
-export type RegisterAnimationEvent = (eventType: PageTransitionEventTypes, callback: (() => void)[]) => (number[]);
+export type PageTransitionEventTypes = "animationEnd" | "exitComplete" | "animationStart";
+export type RegisterAnimationEventParams = {eventType: PageTransitionEventTypes, callback: () => void}
+export type RegisterAnimationEvent = (params: RegisterAnimationEventParams) => (() => void);
 
 type PageTransitionProviderValue = {
     registerAnimationEvent: RegisterAnimationEvent 
@@ -37,12 +38,19 @@ type PageTransitionProviderValue = {
 
 const pageTransitionContext = createContext<PageTransitionProviderValue>(null);
 
-
+type EventsStateType = Record<PageTransitionEventTypes,(Event | undefined)>;
 
 const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType = "FullScreenSlide", mode}) => {
     const key = usePathname();
     const SmoothScrollContext = useSmoothScrollContext();
-
+    
+    const eventNames: PageTransitionEventTypes[] = ["exitComplete","animationStart","animationEnd"];
+    const [events, setEvents] = useState<EventsStateType>({
+        animationEnd: undefined,
+        animationStart: undefined,
+        exitComplete: undefined
+    });
+    
     const disableScrolling = () => {
         console.log("start")
         if(SmoothScrollContext){
@@ -51,70 +59,52 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
         document.body.style.overflowY = "clip"
         document.body.style.overflowX = "clip"
     }
-
-    const [onAnimationStartCallbacks, setOnAnimationStartCallbacks] = useState<(() => void)[]>([]);
-    const [onAnimationEndCallbacks, setOnAnimationEndCallbacks] = useState<(() => void)[]>([]);
-    const [onExitCompleteCallbacks, setOnExitCompleteCallbacks] = useState<(() => void)[]>([]);
-
     const enableScrolling = () => {
         document.body.style.overflowY = "auto"
         document.body.style.overflowX = "clip"
     }
     const onExitComplete = () => {
         enableScrolling();
-        onExitCompleteCallbacks.forEach((callback) => {
-            callback()
-        });
+        if(events.exitComplete){
+            document.dispatchEvent(events.exitComplete)
+        }
     }
     const onAnimationStart = () => {
-        disableScrolling()
-        onAnimationStartCallbacks.forEach((callback) => {
-            callback()
-        });
+        disableScrolling();
+        if(events.animationStart){
+            document.dispatchEvent(events.animationStart)
+        }
     }
     const onAnimationEnd = () => {
         enableScrolling();
-        onAnimationEndCallbacks.forEach((callback) => {
-            callback()
-        });
+        if(events.animationEnd){
+            document.dispatchEvent(events.animationEnd)
+        }
     }
+    useEffect(() => {   
+        const eventMap: EventsStateType = {
+            animationEnd: undefined,
+            animationStart: undefined,
+            exitComplete: undefined
+        };
+        eventNames.forEach((eventName) => {
+            const event = new Event(eventName,{bubbles: true,cancelable: false});
+            eventMap[eventName] = event
+        });
+        setEvents({...eventMap});
+    },[]);
 
-    const registerAnimationEvent: RegisterAnimationEvent  = (eventType, callbacks) => {
-        const callbackIndex: number[] = [];
-        if(pageTransitionType === "none"){
-            console.warn("pageTransitionType is none, any page transition events won't work")
-            return callbackIndex
+    const registerAnimationEvent: RegisterAnimationEvent  = ({eventType, callback}) => {
+
+    
+
+        document.addEventListener(eventType, callback);
+
+        const removeListener = () => {
+            document.removeEventListener(eventType, callback);
         }
-        if(eventType === "animationStart"){
-            setOnAnimationStartCallbacks((old) => {
-                for(const callback of callbacks){
-                    old.push(callback);
-                    callbackIndex.push(old.length - 1);
-                }
-             
-                return old
-            })
-        }
-        if(eventType === "animationEnd"){
-            setOnAnimationEndCallbacks((old) => {
-                for(const callback of callbacks){
-                    old.push(callback);
-                    callbackIndex.push(old.length - 1);
-                }
-             
-                return old
-            })
-        }
-        if(eventType === "exitComplete"){
-            setOnExitCompleteCallbacks((old) => {
-                 for(const callback of callbacks){
-                    old.push(callback);
-                    callbackIndex.push(old.length - 1);
-                }
-                return old
-            })
-        }
-        return callbackIndex
+
+        return removeListener
     };
 
     const providerValue: PageTransitionProviderValue = {
@@ -146,4 +136,15 @@ const usePageTransitionContext = () => {
     }
     return useContext(pageTransitionContext)
 };
-export { usePageTransitionContext }
+
+const usePageTransitionEventListener = (params: RegisterAnimationEventParams) => {
+    const context = usePageTransitionContext();
+    useEffect(() => {
+        if(context){
+            const removeListener = context.registerAnimationEvent(params);
+            return removeListener
+        }
+    },[])
+}
+
+export { usePageTransitionContext, usePageTransitionEventListener }
