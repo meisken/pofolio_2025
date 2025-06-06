@@ -26,15 +26,14 @@ const Article: FC = () => {
                         <ThreeDHoverCard
                             className='w-[95%] max-w-[575px] aspect-[575/368]  @max-[840px]/what-i-do:max-w-full @max-[840px]/what-i-do:w-full'
                         >
-                            <div className='bg-[#151718] rounded-[4px]' style={{boxShadow: "0px 0px 16px 16px rgba(0, 0, 0, 0.15)"}}>
-                                <Image 
-                                    src={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
-                                    alt={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
-                                    width={1274}
-                                    height={826}
-                                    className='w-full object-cover'
-                                />
-                            </div>
+                            <Image 
+                                src={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
+                                alt={landingContents[lang]['what-i-do']['3d-hover-card'].imgSrc}
+                                width={1274}
+                                height={826}
+                                className='w-full object-cover'
+                            />
+                          
                         </ThreeDHoverCard>
                     </div>
                 </div>
