@@ -7,7 +7,7 @@ import ZoomAndFadeLandingAnimation from '@/components/utilities/animations/landi
 const BackgroundVideo: FC = () => {
     const lang = useCurrentLanguages();
     return (
-        <div className='absolute inset-0 z-[-1] portrait:relative portrait:w-full block'>
+        <div className='absolute inset-0 z-[-1] portrait:relative portrait:w-full block overflow-clip'>
             <ZoomAndFadeLandingAnimation 
                 className='w-full h-full'
                 duration={1}
