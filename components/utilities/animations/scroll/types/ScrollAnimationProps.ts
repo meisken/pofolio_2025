@@ -12,15 +12,13 @@ export interface ScrollAnimationProps {
     styleFrom?: CSSProperties,
     styleTo?: CSSProperties,
 
-
     duration?: number,
     ease?: gsap.EaseFunction | "none",
     delay?: number,
     stagger?: gsap.NumberValue | gsap.StaggerVars | undefined
 
-
-
+    pin?: boolean | "self",
     trigger?: "self" | RefObject<HTMLElement | null> | undefined,
-
+    endTrigger?: "self" | RefObject<HTMLElement | null> | undefined,
     
 }
