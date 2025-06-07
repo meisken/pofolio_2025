@@ -1,7 +1,6 @@
 import SplitText from '@/lib/gsap/SplitText';
 import { cn } from '@/lib/tailwind/cn';
-import { useGSAP } from '@gsap/react';
-import { CSSProperties, FC, ReactNode, useRef } from 'react';
+import { CSSProperties, FC, ReactNode, useEffect, useRef } from 'react';
 import gsap from "gsap"
 import { ScrollAnimationProps } from './types/ScrollAnimationProps';
 
@@ -40,27 +39,42 @@ const CustomScrollAnimation: FC<Props> = ({
     const containerRef = useRef<HTMLSpanElement>(null);
     const characterRefs = useRef<(HTMLSpanElement | null)[][]>([[]]);
 
-    useGSAP(() => {
-        const elements = isSplitTextDisabled ? containerRef.current : characterRefs.current.flat();
-        const _trigger = trigger === "self" ? { trigger: containerRef.current } : {};
-        const tween = gsap.to(elements,{
-            ...styleTo,
-            stagger,
-            ease,
-            duration,
-            delay,
-            scrollTrigger: {
-                ..._trigger,
-                ...scrollTriggerVars
-            }
-        });
-        return tween
-
-    },{scope: containerRef, dependencies: [
-        scrollTriggerVars
-    ]});
-
     const isSplitTextDisabled = splitText === undefined ;
+
+    useEffect(() => {
+
+        const elements = isSplitTextDisabled ? containerRef.current : characterRefs.current.flat();
+        let _trigger:  undefined | gsap.DOMTarget = undefined;
+
+        if(trigger === "self"){
+            _trigger = containerRef.current;
+        }else if(trigger !== undefined){
+            _trigger = trigger.current;
+        }
+
+        const ctx = gsap.context(
+            () => {
+                const tween = gsap.to(elements,{
+                    ...styleTo,
+                    stagger,
+                    ease,
+                    duration,
+                    delay,
+                    scrollTrigger: {
+                        trigger: _trigger,
+                        ...scrollTriggerVars
+                    }
+                });
+    
+                return tween
+            }
+        )
+        return () => {
+            ctx.revert();
+        }
+     
+    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger,isSplitTextDisabled])
+
 
     return (
         <span 

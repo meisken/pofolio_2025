@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, RefObject } from "react";
 
 export interface ScrollAnimationProps {
 
@@ -17,7 +17,7 @@ export interface ScrollAnimationProps {
     splitTextClassName?: string,
     splitTextStyle?: CSSProperties,
 
-    trigger?: "self" | gsap.DOMTarget | undefined,
+    trigger?: "self" | RefObject<HTMLElement | null> | undefined,
 
     
 }
