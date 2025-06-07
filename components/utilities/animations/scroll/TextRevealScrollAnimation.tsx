@@ -1,9 +1,9 @@
 import { CSSProperties, FC, ReactNode } from 'react'
 import CustomScrollAnimation from './CustomScrollAnimation';
-import { ScrollAnimationProps } from './types/ScrollAnimationProps';
+import { ScrollAnimationProps, SplitTextProps } from './types/ScrollAnimationProps';
 import { Cubic }from "gsap"
 
-interface Props extends ScrollAnimationProps{
+interface Props extends ScrollAnimationProps, SplitTextProps{
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,

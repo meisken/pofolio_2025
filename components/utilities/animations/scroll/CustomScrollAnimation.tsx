@@ -2,12 +2,12 @@ import SplitText from '@/lib/gsap/SplitText';
 import { cn } from '@/lib/tailwind/cn';
 import { CSSProperties, FC, ReactNode, useEffect, useRef } from 'react';
 import gsap, { Cubic } from "gsap"
-import { ScrollAnimationProps } from './types/ScrollAnimationProps';
+import { ScrollAnimationProps, SplitTextProps } from './types/ScrollAnimationProps';
 
 
 
 
-interface Props extends ScrollAnimationProps{
+interface Props extends ScrollAnimationProps, SplitTextProps{
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,
@@ -28,7 +28,7 @@ const CustomScrollAnimation: FC<Props> = ({
 
     stagger,
     delay,
-    duration,
+    duration = 1,
     ease = Cubic.easeOut,
 
     splitTextClassName,

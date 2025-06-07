@@ -1,21 +1,24 @@
 import { CSSProperties, RefObject } from "react";
 
+export interface SplitTextProps{
+    splitText?: string | undefined,
+    splitTextMode?: "words" | "characters",
+    splitTextClassName?: string,
+    splitTextStyle?: CSSProperties,
+}
 export interface ScrollAnimationProps {
 
     scrollTriggerVars?: ScrollTrigger.Vars,
     styleFrom?: CSSProperties,
     styleTo?: CSSProperties,
 
-    splitText?: string | undefined,
-    splitTextMode?: "words" | "characters",
 
     duration?: number,
     ease?: gsap.EaseFunction | "none",
     delay?: number,
     stagger?: gsap.NumberValue | gsap.StaggerVars | undefined
 
-    splitTextClassName?: string,
-    splitTextStyle?: CSSProperties,
+
 
     trigger?: "self" | RefObject<HTMLElement | null> | undefined,
 
