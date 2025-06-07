@@ -3,25 +3,12 @@ import { cn } from '@/lib/tailwind/cn';
 import { useGSAP } from '@gsap/react';
 import { CSSProperties, FC, ReactNode, useRef } from 'react';
 import gsap from "gsap"
+import { ScrollAnimationProps } from './types/ScrollAnimationProps';
 
 
 
-export interface MaskAndMoveLandingAnimationProps {
 
-    scrollTriggerVars?: ScrollTrigger.Vars,
-    styleFrom?: CSSProperties,
-    styleTo?: CSSProperties,
-
-    splitText?: string | undefined,
-    splitTextMode?: "words" | "characters",
-    stagger?: gsap.NumberValue | gsap.StaggerVars | undefined
-
-    splitTextClassName?: string,
-    splitTextStyle?: CSSProperties,
-
-    trigger?: "self" | gsap.DOMTarget | undefined,
-}
-interface Props extends MaskAndMoveLandingAnimationProps{
+interface Props extends ScrollAnimationProps{
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,
@@ -39,7 +26,11 @@ const CustomScrollAnimation: FC<Props> = ({
 
     splitText,
     splitTextMode,
+
     stagger,
+    delay,
+    duration,
+    ease,
 
     splitTextClassName,
     splitTextStyle,
@@ -55,6 +46,9 @@ const CustomScrollAnimation: FC<Props> = ({
         const tween = gsap.to(elements,{
             ...styleTo,
             stagger,
+            ease,
+            duration,
+            delay,
             scrollTrigger: {
                 ..._trigger,
                 ...scrollTriggerVars
