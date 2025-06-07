@@ -25,17 +25,18 @@ const SplitText: FC<Props> = ({text,splitTextMode = "words",style,className,ref}
                 splitWord.map((word, i) => {
 
                     return (
-                        <span className='' key={`words-${word}-${i}`}>
+                        <span className='whitespace-pre-wrap break-keep' key={`words-${word}-${i}`}>
                             { characterRefs.current[i] = [] }
                             {
                                 splitTextMode === "characters" ? (
                                     word.split("").map((character,index) => {
+                                        console.log(`${word}-${character}-${index}`)
                                         return (
                                             <span
-                                                key={`${word}-${character}-${i}`}
+                                                key={`${word}-${character}-${index}`}
                                                 className={
                                                     cn(
-                                                        "inline-block whitespace-pre-wrap break-keep",
+                                                        "inline",
                                                         className
                                                     )
                                                 }
