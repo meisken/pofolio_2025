@@ -39,12 +39,12 @@ type PageTransitionProviderValue = {
 const pageTransitionContext = createContext<PageTransitionProviderValue>(null);
 
 type EventsStateType = Record<PageTransitionEventTypes,(Event | undefined)>;
+const eventNames: PageTransitionEventTypes[] = ["exitComplete","animationStart","animationEnd"];
 
 const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType = "FullScreenSlide", mode}) => {
     const key = usePathname();
     const SmoothScrollContext = useSmoothScrollContext();
     
-    const eventNames: PageTransitionEventTypes[] = ["exitComplete","animationStart","animationEnd"];
     const [events, setEvents] = useState<EventsStateType>({
         animationEnd: undefined,
         animationStart: undefined,
@@ -53,31 +53,31 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
     
     const disableScrolling = () => {
         if(SmoothScrollContext){
-            SmoothScrollContext.scrollTo(0, false)
+            SmoothScrollContext.scrollTo(0, false);
         }
-        document.body.style.overflowY = "clip"
-        document.body.style.overflowX = "clip"
+        document.body.style.overflowY = "clip";
+        document.body.style.overflowX = "clip";
     }
     const enableScrolling = () => {
-        document.body.style.overflowY = "auto"
-        document.body.style.overflowX = "clip"
+        document.body.style.overflowY = "auto";
+        document.body.style.overflowX = "clip";
     }
     const onExitComplete = () => {
         enableScrolling();
         if(events.exitComplete){
-            document.dispatchEvent(events.exitComplete)
+            document.dispatchEvent(events.exitComplete);
         }
     }
     const onAnimationStart = () => {
         disableScrolling();
         if(events.animationStart){
-            document.dispatchEvent(events.animationStart)
+            document.dispatchEvent(events.animationStart);
         }
     }
     const onAnimationEnd = () => {
         enableScrolling();
         if(events.animationEnd){
-            document.dispatchEvent(events.animationEnd)
+            document.dispatchEvent(events.animationEnd);
         }
     }
     useEffect(() => {   
@@ -88,7 +88,7 @@ const AnimatePresenceContextProvider: FC<Props> = ({children, pageTransitionType
         };
         eventNames.forEach((eventName) => {
             const event = new Event(eventName,{bubbles: true,cancelable: false});
-            eventMap[eventName] = event
+            eventMap[eventName] = event;
         });
         setEvents({...eventMap});
     },[]);
@@ -143,7 +143,7 @@ const usePageTransitionEventListener = (params: RegisterAnimationEventParams) =>
             const removeListener = context.registerAnimationEvent(params);
             return removeListener
         }
-    },[])
+    },[context, params])
 }
 
 export { usePageTransitionContext, usePageTransitionEventListener }
