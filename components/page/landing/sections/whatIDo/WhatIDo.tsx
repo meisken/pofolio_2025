@@ -1,16 +1,16 @@
 import SectionContainer from '@/components/utilities/containers/SectionContainer';
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import Article from './widget/Article';
 import ScrollingParallax from './widget/ScrollingParallax';
 
 
 
 const WhatIDo: FC = () => {
-
+    const containerRef = useRef<HTMLElement>(null);
     return (
-        <SectionContainer className='pb-36'>
-            <Article />
-            <ScrollingParallax />
+        <SectionContainer className='pb-36 ' ref={containerRef}>
+            <Article containerRef={containerRef} />
+            <ScrollingParallax  containerRef={containerRef} />
         </SectionContainer>
     );
 };
