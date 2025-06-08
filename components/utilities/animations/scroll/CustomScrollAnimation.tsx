@@ -35,7 +35,8 @@ const CustomScrollAnimation: FC<Props> = ({
     splitTextStyle,
 
     trigger,
-    endTrigger
+    endTrigger,
+    pin
 }) => {
     const containerRef = useRef<HTMLSpanElement>(null);
     const characterRefs = useRef<(HTMLSpanElement | null)[][]>([[]]);
@@ -45,7 +46,9 @@ const CustomScrollAnimation: FC<Props> = ({
     useEffect(() => {
 
         const elements = isSplitTextDisabled ? containerRef.current : characterRefs.current.flat();
-        let _trigger:  undefined | gsap.DOMTarget = undefined, _endTrigger:  undefined | gsap.DOMTarget = undefined;
+        let _trigger:  undefined | gsap.DOMTarget = undefined, 
+            _endTrigger:  undefined | gsap.DOMTarget = undefined,
+            _pin:  boolean | gsap.DOMTarget | undefined = pin;
 
         if(trigger === "self"){
             _trigger = containerRef.current;
@@ -59,6 +62,9 @@ const CustomScrollAnimation: FC<Props> = ({
             _endTrigger = endTrigger.current;
         }
 
+        if(pin === "self"){
+            _pin = containerRef.current;
+        }
         const ctx = gsap.context(
             () => {
                 const tween = gsap.to(elements,{
@@ -70,6 +76,7 @@ const CustomScrollAnimation: FC<Props> = ({
                     scrollTrigger: {
                         trigger: _trigger,
                         endTrigger: _endTrigger,
+                        pin: _pin,
                         ...scrollTriggerVars
                     }
                 });
@@ -81,7 +88,7 @@ const CustomScrollAnimation: FC<Props> = ({
             ctx.revert();
         }
      
-    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger,isSplitTextDisabled])
+    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger,isSplitTextDisabled,endTrigger,pin])
 
 
     return (

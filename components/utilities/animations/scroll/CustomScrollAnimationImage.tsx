@@ -35,7 +35,8 @@ const CustomScrollAnimationImage: FC<Props> = ({
     ease = Cubic.easeOut,
 
     trigger,
-    endTrigger
+    endTrigger,
+    pin
 }) => {
     const ImageRef = useRef<HTMLImageElement>(null);
 
@@ -43,7 +44,10 @@ const CustomScrollAnimationImage: FC<Props> = ({
 
     useEffect(() => {
 
-        let _trigger:  undefined | gsap.DOMTarget = undefined, _endTrigger:  undefined | gsap.DOMTarget = undefined;
+        let _trigger:  undefined | gsap.DOMTarget = undefined, 
+        _endTrigger:  undefined | gsap.DOMTarget = undefined,
+        _pin:  boolean | gsap.DOMTarget | undefined = pin;
+
         const img = ImageRef.current;
         if(trigger === "self"){
             _trigger = img;
@@ -56,6 +60,9 @@ const CustomScrollAnimationImage: FC<Props> = ({
             _endTrigger = endTrigger.current;
         }
 
+        if(pin === "self"){
+            _pin = img;
+        }
 
         const ctx = gsap.context(
             () => {
@@ -68,6 +75,7 @@ const CustomScrollAnimationImage: FC<Props> = ({
                     scrollTrigger: {
                         trigger: _trigger,
                         endTrigger: _endTrigger,
+                        pin: _pin,
                         ...scrollTriggerVars
                     }
                 });
@@ -79,7 +87,7 @@ const CustomScrollAnimationImage: FC<Props> = ({
             ctx.revert();
         }
      
-    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger])
+    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger,endTrigger,pin])
 
 
     return (
