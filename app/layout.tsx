@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "../style/globals.css";
 import GsapPluginRegisterWrapper from "@/lib/gsap/GsapPluginRegisterWrapper";
-import SmoothScrollRegisterContextProvider from "@/lib/gsap/SmoothScrollRegisterContextProvider";
 import AnimatePresenceContextProvider from "@/lib/framerMotion/AnimatePresenceContextProvider";
 import { headers } from "next/headers";
 import { langQueryHeaderName } from "@/contents/supportedLanguagesData";
 import FixedHeader from "@/components/header/FixedHeader";
+import BlankLoadingContextProvider from "@/components/loader/BlankLoadingContextProvider";
 
 
 export const metadata: Metadata = {
@@ -28,14 +28,17 @@ export default async function RootLayout({
     return (
         <html lang={lang} >
             <body>
-                <FixedHeader />
-                <GsapPluginRegisterWrapper>
-                    <SmoothScrollRegisterContextProvider>
-                        <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
-                            {children}
-                        </AnimatePresenceContextProvider>
-                    </SmoothScrollRegisterContextProvider>
-                </GsapPluginRegisterWrapper>
+                
+                <BlankLoadingContextProvider>
+                    <FixedHeader />
+                    <GsapPluginRegisterWrapper>
+                        
+                            <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
+                                {children}
+                            </AnimatePresenceContextProvider>
+                     
+                    </GsapPluginRegisterWrapper>
+                </BlankLoadingContextProvider>
             </body>
         </html>
     );
