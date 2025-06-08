@@ -22,7 +22,6 @@ const Hero: FC = () => {
         > 
             <Headline />
             <BackgroundVideo />
-            
             <ShareButtonsContainer />
         </section>
     );

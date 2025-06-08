@@ -1,3 +1,4 @@
+"use client"
 import { landingContents } from '@/contents/landingContents';
 import { useCurrentLanguages } from '@/contents/languageSupportHooks';
 import { FC } from 'react'
@@ -13,12 +14,19 @@ const BackgroundVideo: FC = () => {
                 duration={1}
                 delay={0.7}
             >
-                <video className="w-full h-full object-cover remoteVideo" playsInline  muted autoPlay  loop>
-                    <source  src={landingContents[lang].hero.backgroundVideo.videoSrc} type='video/mp4' />
+                <video 
+                    className="w-full h-full object-cover remoteVideo" 
+                    playsInline  
+                    muted 
+                    autoPlay  
+                    loop
+                    src={landingContents[lang].hero.backgroundVideo.videoSrc}
+                >
+                 
                 </video>
             </ZoomAndFadeLandingAnimation>
 
-            <div className='absolute bottom-[-1px] left-0 right-0 h-[15%]' style={{backgroundImage:"linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0) 100%) "}}></div>
+            <div className='absolute bottom-[-1%] left-0 right-0 h-[5%]' style={{backgroundImage:"linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%) "}}></div>
         </div>
     );
 };

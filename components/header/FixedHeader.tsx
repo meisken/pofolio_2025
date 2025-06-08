@@ -5,53 +5,59 @@ import LanguageToggle from './widget/LanguageToggle';
 import HamburgerMenu from './widget/HamburgerMenu';
 import NavMenu from './widget/NavMenu';
 import SpacingLgContainer from '../utilities/containers/SpacingLgContainer';
-import { motion } from "framer-motion"
-import { getZoomAndFadeAnimationAttributes } from '@/lib/framerMotion/landingAnimations/ZoomAndFadeVariants';
+import CustomLandingAnimation from '../utilities/animations/landing/CustomLandingAnimation';
 
 
 
 const FixedHeader: FC = () => {
     const [navMenuActive,SetNavMenuActive] = useState(false);
     return (
-        <motion.header
+        <header
             className='
                 fixed 
                 top-0 
                 left-0  
                 right-0
-                py-[clamp(32px,calc(((100vw-1024px)/896*16)+32px),48px)]
+                
                 z-30
                 flex
                 items-center
                 pointer-events-none
             '
-            {...getZoomAndFadeAnimationAttributes({
-                scale: {
-                    from: 1.025,
-                    to: 1
-                },
-                transition: {
-                    delay: 1.9,
-                    duration: 1.2
-                }
-            })}
+    
         >
-            <SpacingLgContainer className='flex justify-between'>
-            
+            <CustomLandingAnimation
+                className='
+                    w-full 
+                    h-full 
+                    py-[clamp(32px,calc(((100vw-1024px)/896*16)+32px),48px)]
+                    flex
+                    items-center
+                '
+                styleFrom={{
+                    opacity: 0,
+                    transform: "translateY(-20px)"
+                }}
+                styleTo={{
+                    opacity: 1,
+                    transform: "translateY(0px)"
+                }}
+                duration={0.6}
+            >
+                <SpacingLgContainer className='flex justify-between'>
+
                     <Logo />
+                    <div 
+                        className='flex items-center gap-6 pointer-events-auto'
+                    >
+                        <LanguageToggle />
+                        <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
+                    </div>
+                    <NavMenu navMenuActive={navMenuActive} SetNavMenuActive={SetNavMenuActive} />
             
-                <div 
-                    className='flex items-center gap-6 pointer-events-auto'
-                >
-                    <LanguageToggle />
-                    <HamburgerMenu active={navMenuActive} onClick={() => { SetNavMenuActive(old => !old) }} />
-                </div>
-
-
-                <NavMenu navMenuActive={navMenuActive} SetNavMenuActive={SetNavMenuActive} />
-           
-            </SpacingLgContainer>
-        </motion.header>
+                </SpacingLgContainer>
+            </CustomLandingAnimation>
+        </header>
     );
 };
 

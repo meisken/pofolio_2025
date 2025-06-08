@@ -1,8 +1,8 @@
 "use client"
 
+import CustomLandingAnimation from '@/components/utilities/animations/landing/CustomLandingAnimation';
 import MaskAndMoveLandingAnimation from '@/components/utilities/animations/landing/MaskAndMoveLandingAnimation';
 import ScaleLandingAnimation from '@/components/utilities/animations/landing/ScaleLandingAnimation';
-import ZoomAndFadeLandingAnimation from '@/components/utilities/animations/landing/ZoomAndFadeLandingAnimation';
 import TypingWriter from '@/components/utilities/animations/TypingWriter';
 import SpacingLgContainer from '@/components/utilities/containers/SpacingLgContainer';
 import Line from '@/components/utilities/decorations/Line';
@@ -52,6 +52,7 @@ const Headline: FC = () => {
                                 y: 1
                             }
                         }}
+                      
                         duration={0.75}
                     >
                         <Line />
@@ -73,21 +74,32 @@ const Headline: FC = () => {
                 </MaskAndMoveLandingAnimation>
 
             </HeadlineHero>
-            <ParagraphTwiceXl className='opacity-90 w-[clamp(460px,calc(((100vw-1024px)/896*65)+460px),545px)] lg:w-[clamp(360px,calc(((100vw-480px)/544*80)+360px),420px)] xs:w-full'>
+            <ParagraphTwiceXl className='opacity-80 w-[clamp(460px,calc(((100vw-1024px)/896*65)+460px),545px)] lg:w-[clamp(360px,calc(((100vw-480px)/544*80)+360px),420px)] xs:w-full'>
              
-                <ZoomAndFadeLandingAnimation 
-                    // splitText={landingContents[lang].hero.description} 
-                    // splitTextMode='words' 
-                    // stagger={0.02}
-                    zoom={{
-                        from: 1,
-                        to: 1
+                <CustomLandingAnimation 
+                    splitText={landingContents[lang].hero.description} 
+                    splitTextMode='words' 
+               
+                    stagger={0.025}
+                    styleFrom={{
+                        transform: "translateY(100%)",
+                        clipPath: "inset(0% 0% 101% 0%)",
+                        opacity: 0,
+
+                     
                     }}
-                    duration={1.5}
+                    styleTo={{
+                        clipPath: "inset(0% 0% -1% 0%)",
+                        transform: "translateY(0%)",
+                        opacity: 1,
+    
+                       
+                    }}
+                    duration={0.75}
                     delay={0.7}
                 >
                     {landingContents[lang].hero.description}
-                </ZoomAndFadeLandingAnimation>
+                </CustomLandingAnimation>
             </ParagraphTwiceXl>
         </SpacingLgContainer>
     );

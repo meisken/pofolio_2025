@@ -1,5 +1,5 @@
 "use client"
-import ZoomAndFadeLandingAnimation from '@/components/utilities/animations/landing/ZoomAndFadeLandingAnimation';
+import CustomLandingAnimation from '@/components/utilities/animations/landing/CustomLandingAnimation';
 import FacebookShareButton from '@/components/utilities/buttons/FacebookShareButton';
 import TwitterShareButton from '@/components/utilities/buttons/TwitterShareButton';
 import UnderlineButton from '@/components/utilities/buttons/UnderlineButton';
@@ -27,13 +27,17 @@ const ShareButtonsContainer: FC = () => {
                 portrait:static
             '
         >
-            <ZoomAndFadeLandingAnimation
-                zoom={{
-                    from: 1.025,
-                    to: 1
+            <CustomLandingAnimation
+                styleFrom={{
+                    opacity: 0,
+                    transform: "translateY(20px)"
                 }}
-                delay={0.7}
-                duration={1.2}
+                styleTo={{
+                    opacity: 1,
+                    transform: "translateY(0px)"
+                }}
+                delay={0.3}
+                duration={0.6}
                 className='
                     flex 
                     justify-between
@@ -45,7 +49,7 @@ const ShareButtonsContainer: FC = () => {
                     <FacebookShareButton url={url ?? ""} />
                     <TwitterShareButton url={url ?? ""}  />
                 </div>
-            </ZoomAndFadeLandingAnimation>
+            </CustomLandingAnimation>
 
         </SpacingLgContainer>
     );
