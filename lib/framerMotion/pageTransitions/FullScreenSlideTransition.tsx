@@ -3,6 +3,7 @@
 import { FC } from 'react'
 import { motion, Variants } from "framer-motion"
 import { PageTransitionProps } from './types/PageTransitionProps'
+import HeadingEighthXl from '@/components/utilities/headings/HeadingEighthXl'
 
 
 
@@ -23,10 +24,11 @@ const slidesVariants: Variants = {
         }
     },
     exit: { 
-        y: ["100%","0%","0%","-100%"],
+        clipPath: ["inset(101% 0% 0% 0% )","inset(-1% 0% 0% 0% )","inset(-1% 0% 0% 0%)","inset(-1% 0% 0% 0%)"],
+        y: ["0%","0%","0%","-100%"],
         transition: {
-            duration: 1.2,
-            ease: [0.33, 1, 0.68, 1],
+            duration: 1.5,
+            ease: [0.45, 0, 0.55, 1],
             times: [0, 0.4,0.6, 1]
         }
     },
@@ -58,7 +60,7 @@ const outVariants: Variants = {
 const anim = (variants: Variants) => {
     return {
         initial: "initial",
-        animate: "animate",
+        // animate: "animate",
         exit: "exit",
         variants
     }
@@ -76,8 +78,9 @@ const FullScreenSlideTransition: FC<PageTransitionProps> = ({children, onAnimati
                     onAnimationStart={onAnimationStart}
                     onAnimationComplete={onAnimationEnd}
                     {...anim(slidesVariants)}
-                    className='bg-white w-screen h-screen'
+                    className='bg-white w-screen h-screen text-black uppercase flex justify-center items-center'
                 >
+                    <HeadingEighthXl>meisken.dev</HeadingEighthXl>
                 </motion.div>
             </motion.div>
     

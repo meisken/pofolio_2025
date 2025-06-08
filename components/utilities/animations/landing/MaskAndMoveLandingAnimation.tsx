@@ -1,3 +1,4 @@
+import { useLoadingEventListener } from '@/components/loader/BlankLoadingContextProvider';
 import { usePageTransitionEventListener } from '@/lib/framerMotion/AnimatePresenceContextProvider';
 import SplitText from '@/lib/gsap/SplitText';
 import { cn } from '@/lib/tailwind/cn';
@@ -106,28 +107,33 @@ const MaskAndMoveLandingAnimation: FC<Props> = ({
  
     const { contextSafe } = useGSAP();
     const isSplitTextDisabled = splitText === undefined ;
+
+    const animationEnd = () => {
+        if(contextSafe){
+            const runTween = contextSafe(() => {
+                const elements = isSplitTextDisabled ? containerRef.current : characterRefs.current.flat();
+
+                const tween = gsap.to(elements, {
+                    transform: getStylesMap[direction].transform(transformDisplacement.to),
+                    clipPath: getStylesMap[direction].clipPath(clipPathDepth.to),
+                    duration,
+                    ease,
+                    delay,
+                    stagger
+                })
+
+                return tween 
+            });
+            runTween();
+        }
+    }
     usePageTransitionEventListener({
         eventType: "animationEnd",
-        callback: () => {
-            if(contextSafe){
-                const runTween = contextSafe(() => {
-                    const elements = isSplitTextDisabled ? containerRef.current : characterRefs.current.flat();
-
-                    const tween = gsap.to(elements, {
-                        transform: getStylesMap[direction].transform(transformDisplacement.to),
-                        clipPath: getStylesMap[direction].clipPath(clipPathDepth.to),
-                        duration,
-                        ease,
-                        delay,
-                        stagger
-                    })
-
-                    return tween 
-                });
-                runTween();
-            }
-        }
-        
+        callback: animationEnd
+    });
+    useLoadingEventListener({
+        eventType: "loaderOut",
+        callback: animationEnd
     });
     
 

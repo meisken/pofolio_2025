@@ -1,3 +1,4 @@
+import { useLoadingEventListener } from '@/components/loader/BlankLoadingContextProvider';
 import { usePageTransitionEventListener } from '@/lib/framerMotion/AnimatePresenceContextProvider';
 import { cn } from '@/lib/tailwind/cn';
 import { useGSAP } from '@gsap/react';
@@ -54,10 +55,7 @@ const ScaleLandingAnimation: FC<Props> = ({
 }) => {
     const containerRef = useRef<HTMLSpanElement>(null);
     const { contextSafe } = useGSAP();
-    
-    usePageTransitionEventListener({
-        eventType: "animationEnd",
-        callback: () => {
+    const animationEnd = () => {
             if(contextSafe){
                 const runTween = contextSafe(() => {
                     const elements = containerRef.current;
@@ -73,9 +71,15 @@ const ScaleLandingAnimation: FC<Props> = ({
                 runTween();
             }
         }
+    usePageTransitionEventListener({
+        eventType: "animationEnd",
+        callback: animationEnd
         
     }); 
-
+    useLoadingEventListener({
+        eventType: "loaderOut",
+        callback: animationEnd
+    });
 
     return (
         <span 
