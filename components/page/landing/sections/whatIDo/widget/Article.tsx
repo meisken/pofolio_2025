@@ -7,7 +7,7 @@ import ArticleContainer from '@/components/utilities/containers/ArticleContainer
 import HeadingSmDark from '@/components/utilities/headings/HeadingSmDark';
 import { landingContents } from '@/contents/landingContents';
 import { useCurrentLanguages } from '@/contents/languageSupportHooks';
-
+import { Linear } from "gsap"
 import Image from 'next/image';
 import { FC, RefObject, useRef } from 'react'
 
@@ -73,13 +73,13 @@ const Article: FC<Props> = ({containerRef}) => {
                                         styleTo={{
                                             clipPath: "inset(0% 0% -1% 0%)"
                                         }}
-                                        duration={1.5}
+                                        duration={1.2}
                                         delay={0.2}
-                                        ease={"none"}
+                                        ease={Linear.easeNone}
                                         trigger={threeDCardContainerRef}
                                         scrollTriggerVars={{
-                                            start: () => "top center",
-                                            end: () => "top center",
+                                            start: () => "bottom bottom",
+                                            end: () => "bottom bottom",
                                         }}
                                     >
                                     
@@ -119,7 +119,6 @@ const Article: FC<Props> = ({containerRef}) => {
                         </CustomScrollAnimation>
                     </HeadingSmDark>
                     <div
-                    
                         className='
                             w-[clamp(440px,calc(((100vw-1024px)/896*148)+440px),608px)] 
                             lg:w-[clamp(380px,calc(((100vw-768px)/256*60)+380px),440px)] 
@@ -140,18 +139,11 @@ const Article: FC<Props> = ({containerRef}) => {
                         >
                      
                             <HoverParallaxImage 
-                            
-                                //hover parallax
-                          
                                 className='object-cover'
                                 src={landingContents[lang]['what-i-do']['image-parallax'].imgSrc}
                                 alt={landingContents[lang]['what-i-do']['image-parallax'].imgSrc}
                                 fill
-                            
                             />
-                       
-                       
-                         
                         </ImageRevealScrollAnimation>
                     
                     </div>
