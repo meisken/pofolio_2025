@@ -7,7 +7,6 @@ import { setCookie } from '@/function/client/cookies';
 import { useOutsideAlerter } from '@/hooks/useOutsideAlerter';
 import { cn } from '@/lib/tailwind/cn';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { FC, MouseEvent, useRef, useState } from 'react'
 
 
@@ -15,14 +14,12 @@ import { FC, MouseEvent, useRef, useState } from 'react'
 const LanguageToggle: FC = () => {
 
     const currentLang = useCurrentLanguages();
-    const router = useRouter();
+
     const [active, setActive] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const handleLinkOnClick = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, lang: SupportedLanguages) => {
-        e.preventDefault();
         setCookie(userLastVisitLanguageCookiesName, lang);
-        router.push(`/?${langUrlQueryName}=${lang}`);
         setActive(false);
     }
     const handleMenuToggle = () => {
