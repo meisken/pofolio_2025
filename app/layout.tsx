@@ -6,6 +6,7 @@ import { headers } from "next/headers";
 import { langQueryHeaderName } from "@/contents/supportedLanguagesData";
 import FixedHeader from "@/components/header/FixedHeader";
 import BlankLoadingContextProvider from "@/components/loader/BlankLoadingContextProvider";
+import SplashCursor from "@/components/utilities/cursons/SplashCursor";
 
 
 export const metadata: Metadata = {
@@ -28,15 +29,13 @@ export default async function RootLayout({
     return (
         <html lang={lang} >
             <body>
-                
                 <BlankLoadingContextProvider>
                     <FixedHeader />
+                    <SplashCursor />
                     <GsapPluginRegisterWrapper>
-                        
-                            <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
-                                {children}
-                            </AnimatePresenceContextProvider>
-                     
+                        <AnimatePresenceContextProvider pageTransitionType="FullScreenSlide" mode="popLayout">
+                            {children}
+                        </AnimatePresenceContextProvider>
                     </GsapPluginRegisterWrapper>
                 </BlankLoadingContextProvider>
             </body>
