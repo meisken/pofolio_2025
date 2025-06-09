@@ -77,7 +77,6 @@ const BlankLoadingContextProvider: FC<Props> = ({children}) => {
  
         videoElements.forEach((video) => {
             videos.push(video)
-        
         });
 
 
@@ -127,11 +126,14 @@ const BlankLoadingContextProvider: FC<Props> = ({children}) => {
     },[events]);
 
     useEffect(() => {
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             if(!isLoaded){
                 setIsLoaded(true)
             }
-        }, 1500)
+        }, 1500);
+        return () => {
+            clearTimeout(timer)
+        }
     }, [isLoaded])
     const onExitComplete = () => {
         enableScrolling();
