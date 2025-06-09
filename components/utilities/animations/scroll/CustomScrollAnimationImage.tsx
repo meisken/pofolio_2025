@@ -1,13 +1,14 @@
 import { cn } from '@/lib/tailwind/cn';
 import { CSSProperties, FC, useEffect, useRef } from 'react';
 import gsap, { Cubic } from "gsap"
-import { ScrollAnimationProps } from './types/ScrollAnimationProps';
+import { blindFlippingProps, ScrollAnimationProps } from './types/ScrollAnimationProps';
 import Image from 'next/image';
+import { generateMask, UpdateProgressMapByProgress } from '../general/blindFlippingTransition';
 
 
 
 
-interface Props extends ScrollAnimationProps{
+interface Props extends ScrollAnimationProps, blindFlippingProps{
 
     className?: string,
     style?: CSSProperties,
@@ -36,7 +37,9 @@ const CustomScrollAnimationImage: FC<Props> = ({
 
     trigger,
     endTrigger,
-    pin
+    pin,
+    
+    blindFlipping
 }) => {
     const ImageRef = useRef<HTMLImageElement>(null);
 
@@ -66,6 +69,15 @@ const CustomScrollAnimationImage: FC<Props> = ({
 
         const ctx = gsap.context(
             () => {
+                let updateMask: UpdateProgressMapByProgress;
+                if(blindFlipping !== undefined && img !== null){
+                    const { maskImageString, updateProgressMapByProgress} = generateMask(blindFlipping.strips, blindFlipping.gradientDirection);
+                    updateMask = updateProgressMapByProgress;
+                    gsap.set(img,{
+                        maskImage: maskImageString
+                    })
+                    
+                }
                 const tween = gsap.to(img,{
                     ...styleTo,
                     stagger,
@@ -76,7 +88,25 @@ const CustomScrollAnimationImage: FC<Props> = ({
                         trigger: _trigger,
                         endTrigger: _endTrigger,
                         pin: _pin,
-                        ...scrollTriggerVars
+                        ...scrollTriggerVars,
+                        onUpdate: (self) => {
+                            if( typeof updateMask === 'function' && blindFlipping  !== undefined){
+                                const mask = updateMask({
+                                    progress: self.progress,
+                                    stagger: blindFlipping.stagger,
+                                    easingFunction: blindFlipping.easingFunction
+                                });
+                                gsap.set(img,{
+                                    maskImage: mask
+                                })
+                            }
+
+                            if(scrollTriggerVars?.onUpdate){
+                                scrollTriggerVars?.onUpdate(self);
+                            }
+
+                            
+                        }
                     }
                 });
     

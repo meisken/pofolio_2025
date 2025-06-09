@@ -1,4 +1,5 @@
 import { CSSProperties, RefObject } from "react";
+import { GradientDirection } from "../../general/blindFlippingTransition";
 
 export interface SplitTextProps{
     splitText?: string | undefined,
@@ -21,4 +22,12 @@ export interface ScrollAnimationProps {
     trigger?: "self" | RefObject<HTMLElement | null> | undefined,
     endTrigger?: "self" | RefObject<HTMLElement | null> | undefined,
     
+}
+export interface blindFlippingProps {
+    blindFlipping?: {
+        strips?: number,
+        gradientDirection?: GradientDirection,
+        stagger?: number,
+        easingFunction?: (t: number) => number
+    }
 }

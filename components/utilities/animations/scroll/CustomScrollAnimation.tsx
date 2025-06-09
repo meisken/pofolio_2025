@@ -2,12 +2,13 @@ import SplitText from '@/lib/gsap/SplitText';
 import { cn } from '@/lib/tailwind/cn';
 import { CSSProperties, FC, ReactNode, useEffect, useRef } from 'react';
 import gsap, { Cubic } from "gsap"
-import { ScrollAnimationProps, SplitTextProps } from './types/ScrollAnimationProps';
+import { blindFlippingProps, ScrollAnimationProps, SplitTextProps } from './types/ScrollAnimationProps';
+import { generateMask, UpdateProgressMapByProgress } from '../general/blindFlippingTransition';
 
 
 
 
-interface Props extends ScrollAnimationProps, SplitTextProps{
+interface Props extends ScrollAnimationProps, SplitTextProps, blindFlippingProps{
     children?: ReactNode,
     className?: string,
     style?: CSSProperties,
@@ -36,7 +37,9 @@ const CustomScrollAnimation: FC<Props> = ({
 
     trigger,
     endTrigger,
-    pin
+    pin,
+
+    blindFlipping
 }) => {
     const containerRef = useRef<HTMLSpanElement>(null);
     const characterRefs = useRef<(HTMLSpanElement | null)[][]>([[]]);
@@ -44,8 +47,8 @@ const CustomScrollAnimation: FC<Props> = ({
     const isSplitTextDisabled = splitText === undefined ;
 
     useEffect(() => {
-
-        const elements = isSplitTextDisabled ? containerRef.current : characterRefs.current.flat();
+        const container = containerRef.current;
+        const elements = isSplitTextDisabled ? container : characterRefs.current.flat();
         let _trigger:  undefined | gsap.DOMTarget = undefined, 
             _endTrigger:  undefined | gsap.DOMTarget = undefined,
             _pin:  boolean | gsap.DOMTarget | undefined = pin;
@@ -61,12 +64,28 @@ const CustomScrollAnimation: FC<Props> = ({
         }else if(endTrigger !== undefined){
             _endTrigger = endTrigger.current;
         }
-
         if(pin === "self"){
             _pin = containerRef.current;
         }
+
+
         const ctx = gsap.context(
             () => {
+
+                let updateMask: UpdateProgressMapByProgress ;
+                if(!isSplitTextDisabled && blindFlipping){
+                    console.warn("splitText and blindFlipping can not enable on the same element")
+                    return
+                }
+                if(blindFlipping !== undefined && container !== null && isSplitTextDisabled){
+                    const { maskImageString, updateProgressMapByProgress} = generateMask(blindFlipping.strips, blindFlipping.gradientDirection);
+                    updateMask = updateProgressMapByProgress;
+                    gsap.set(container,{
+                        maskImage: maskImageString
+                    })
+                    
+                }
+
                 const tween = gsap.to(elements,{
                     ...styleTo,
                     stagger,
@@ -77,7 +96,25 @@ const CustomScrollAnimation: FC<Props> = ({
                         trigger: _trigger,
                         endTrigger: _endTrigger,
                         pin: _pin,
-                        ...scrollTriggerVars
+                        ...scrollTriggerVars,
+                        onUpdate: (self) => {
+                            if( typeof updateMask === 'function' && blindFlipping  !== undefined){
+                                const mask = updateMask({
+                                    progress: self.progress,
+                                    stagger: blindFlipping.stagger,
+                                    easingFunction: blindFlipping.easingFunction
+                                });
+                                gsap.set(container,{
+                                    maskImage: mask
+                                })
+                            }
+
+                            if(scrollTriggerVars?.onUpdate){
+                                scrollTriggerVars?.onUpdate(self);
+                            }
+
+                            
+                        }
                     }
                 });
     
@@ -88,8 +125,7 @@ const CustomScrollAnimation: FC<Props> = ({
             ctx.revert();
         }
      
-    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger,isSplitTextDisabled,endTrigger,pin])
-
+    },[scrollTriggerVars,delay,duration,ease,stagger,styleTo,trigger,isSplitTextDisabled,endTrigger,pin,blindFlipping])
 
     return (
         <span 
