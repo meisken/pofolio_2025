@@ -60,7 +60,7 @@ const ArticleContainer: FC<Props> = ({className,description,ref,style,title,cust
                     scrollTriggerVars={{
                         start: () => "top center",
                         end: () => "top center",
-                        toggleActions: "play none reverse none",
+                        toggleActions: "play none none reverse",
                         ...scrollTriggerVars
                     }}
 
@@ -83,7 +83,8 @@ const ArticleContainer: FC<Props> = ({className,description,ref,style,title,cust
                     scrollTriggerVars={{
                         start: () => "top center",
                         end: () => "top center",
-                        toggleActions: "play none reverse none"
+                        toggleActions: "play none none reverse",
+                        ...scrollTriggerVars,
                     }}
                 >
                     {description}

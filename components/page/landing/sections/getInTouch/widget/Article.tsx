@@ -10,6 +10,10 @@ const Article: FC = () => {
     return (
         <div className='flex flex-col gap-20 '>
             <ArticleContainer 
+                scrollTriggerVars={{
+                    start: () => "bottom bottom ",
+                    end: () => "bottom bottom ",
+                }}
                 title={landingContents[lang]['get-in-touch'].heading}
                 description={(
                     <span className='flex flex-col '>
