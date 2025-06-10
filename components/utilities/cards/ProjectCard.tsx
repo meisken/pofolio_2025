@@ -3,17 +3,22 @@ import HeadingThirdXl from '../headings/HeadingThirdXl';
 import ParagraphBase from '../paragraphs/ParagraphBase';
 import Image from 'next/image';
 import Arrow from '../svg/Arrow';
+import Link from 'next/link';
 
 interface Props{
     index?: string,
     description?: string,
     mediaSrc?: string,
-    mediaType?: "image" | "video"
+    mediaType?: "image" | "video",
+    projectLink: string
 }
 
-const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType}) => {
+const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType,projectLink}) => {
     return (
-        <div className='flex flex-col text-black w-full relative @container/project-card'>
+        <Link 
+            className='flex flex-col text-black w-full relative @container/project-card cursor-pointer'
+            href={projectLink}
+        >
             <div className=' w-full relative h-[calc(405/720*100cqw)]'>
                 {
                     mediaSrc === "" ? (<></>) : (
@@ -76,7 +81,7 @@ const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType}) => {
 
             </div>
 
-        </div>
+        </Link>
     );
 };
 

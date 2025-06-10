@@ -1,3 +1,5 @@
+import CustomScrollAnimation from '@/components/utilities/animations/scroll/CustomScrollAnimation';
+import TextRevealScrollAnimation from '@/components/utilities/animations/scroll/TextRevealScrollAnimation';
 import ProjectCard from '@/components/utilities/cards/ProjectCard';
 import HeadingSmDark from '@/components/utilities/headings/HeadingSmDark';
 import { landingContents } from '@/contents/landingContents';
@@ -22,28 +24,62 @@ const Showcase: FC = () => {
             '
         >
             {
-                landingContents[lang]['projects'].projects.map(({description,videoSrc,caption},i) => {
+                landingContents[lang]['projects'].projects.map(({description,videoSrc,caption,projectLink},i) => {
                     return (
-                        <div 
+                        <div
+
                             key={`project-${i}`} 
                             className={
                                 cn(
-                                    'w-full  max-w-[720px] flex flex-col gap-4' ,
+                                    'w-full  max-w-[720px] flex flex-col gap-4 overflow-auto' ,
                                     {
                                         "justify-self-start lg:justify-self-center": i % 2 === 0,
                                         "justify-self-end lg:justify-self-center": !(i % 2 === 0),
                                     }
                                 )
                             }
-                         
+                    
                         >
-                            <HeadingSmDark>{caption}</HeadingSmDark>
-                            <ProjectCard 
-                                description={description}
-                                index={`0${i + 1}.`}
-                                mediaSrc={videoSrc}
-                                mediaType='video'
-                            />
+                      
+
+                            <TextRevealScrollAnimation
+                                scrollTriggerVars={{
+                                    start: () => `center bottom`,
+                                    end: () => `center bottom`,
+                                }}
+                      
+                                trigger={"self"}
+                            >
+                                <HeadingSmDark>{caption}</HeadingSmDark>
+                            </TextRevealScrollAnimation>
+                            
+                            <CustomScrollAnimation
+                                scrollTriggerVars={{
+                                    start: () => `center bottom`,
+                                    end: () => `center bottom`,
+                                }}
+                                duration={0.75}
+                                trigger={"self"}
+                                
+                                styleFrom={{
+                                    opacity: 0,
+                                    scale: 0.9
+                        
+                                }}
+                                styleTo={{
+                                    opacity: 1,
+                                    scale: 1
+                                }}
+                            >
+                                <ProjectCard 
+                                    projectLink={projectLink}
+                                    description={description}
+                                    index={`0${i + 1}.`}
+                                    mediaSrc={videoSrc}
+                                    mediaType='video'
+                                />
+                            </CustomScrollAnimation>
+                          
                         </div>
                    
                     )

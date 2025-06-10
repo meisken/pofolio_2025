@@ -38,22 +38,26 @@ export type LandingContents = Record<SupportedLanguages,{
                 {
                     caption: string
                     videoSrc: string,
-                    description: string
+                    description: string,
+                    projectLink: string
                 },
                 {
                     caption: string
                     videoSrc: string,
-                    description: string
+                    description: string,
+                    projectLink: string
                 },
                 {
                     caption: string
                     videoSrc: string,
-                    description: string
+                    description: string,
+                    projectLink: string
                 },
                 {
                     caption: string
                     videoSrc: string,
-                    description: string
+                    description: string,
+                    projectLink: string
                 }
             ],
         },
@@ -142,22 +146,27 @@ export const landingContents: LandingContents = {
                 {
                     caption: "Portfolio V1",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation."
+                    description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation.",
+                    projectLink: "https://portfolio.meisken.dev/"
+                    
                 },
                 {
                     caption: "how moons slow retreat earth",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here's the project I worked for South China Morning Post: HK, a storytelling page with image sequence and a mobile first design"
+                    description: "Here's the project I worked for South China Morning Post: HK, a storytelling page with image sequence and a mobile first design",
+                    projectLink: "https://portfolio.meisken.dev/"
                 },
                 {
                     caption: "HALL OF FAME",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a historical website with a 3D animation. And 4 unique pages for each hero stories with a lot of scroll animations."
+                    description: "Here’s a historical website with a 3D animation. And 4 unique pages for each hero stories with a lot of scroll animations.",
+                    projectLink: "https://portfolio.meisken.dev/"
                 },
                 {
                     caption: "Todo calendar web app",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design "
+                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design ",
+                    projectLink: "https://portfolio.meisken.dev/"
                 }
             ],
         },
@@ -245,22 +254,26 @@ export const landingContents: LandingContents = {
                {
                     caption: "Portfolio V1",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation."
+                    description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation.",
+                    projectLink: "https://portfolio.meisken.dev/"
                 },
                 {
                     caption: "how moons slow retreat earth",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here's the project I worked for South China Morning Post: HK. It's a storytelling page with image sequence and a mobile first design"
+                    description: "Here's the project I worked for South China Morning Post: HK. It's a storytelling page with image sequence and a mobile first design",
+                    projectLink: "https://portfolio.meisken.dev/"
                 },
                 {
                     caption: "HALL OF FAME",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a historical website with a 3D animation, but presented with image sequence. And 4 page for each hero stories with a lot of scroll animation."
+                    description: "Here’s a historical website with a 3D animation, but presented with image sequence. And 4 page for each hero stories with a lot of scroll animation.",
+                    projectLink: "https://portfolio.meisken.dev/"
                 },
                 {
                     caption: "Todo calendar web app",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design "
+                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design ",
+                    projectLink: "https://portfolio.meisken.dev/"
                 }
             ],
         },
