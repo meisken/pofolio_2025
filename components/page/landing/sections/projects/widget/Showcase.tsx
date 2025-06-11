@@ -76,7 +76,7 @@ const Showcase: FC = () => {
                                     description={description}
                                     index={`0${i + 1}.`}
                                     mediaSrc={videoSrc}
-                                    mediaType='video'
+                                    mediaType='image'
                                 />
                             </CustomScrollAnimation>
                           

@@ -50,7 +50,7 @@ const ProjectCard: FC<Props> = ({description,index,mediaSrc="",mediaType,project
                     flex 
                     gap-[clamp(28px,calc(((100cqw-460px)/260*12)+28px),40px)] 
                     justify-around 
-                    bg-white
+                    bg-[#F2F2F2]
 
                     @max-[460px]/project-card:h-auto
                     @max-[460px]/project-card:flex-col

@@ -58,6 +58,12 @@ export type LandingContents = Record<SupportedLanguages,{
                     videoSrc: string,
                     description: string,
                     projectLink: string
+                },
+                {
+                    caption: string
+                    videoSrc: string,
+                    description: string,
+                    projectLink: string
                 }
             ],
         },
@@ -147,29 +153,34 @@ export const landingContents: LandingContents = {
             description: "I worked on these projects as both a developer and designer, writing code to build them while designing in Figma.",
             projects: [
                 {
+                    caption: "HALL OF FAME",
+                    videoSrc: "/assets/projectThumbnail/hall.jpg",
+                    description: "Here’s a historical website with a 3D animation. And 4 unique pages for each hero stories with a lot of scroll animations.",
+                    projectLink: "https://hall.meisken.dev/"
+                },
+                {
                     caption: "Portfolio V1",
-                    videoSrc: "/assets/hall_of_fame.mp4",
+                    videoSrc: "/assets/projectThumbnail/old_portfolio.jpg",
                     description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation.",
                     projectLink: "https://portfolio.meisken.dev/"
-                    
                 },
                 {
-                    caption: "how moons slow retreat earth",
-                    videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here's the project I worked for South China Morning Post: HK, a storytelling page with image sequence and a mobile first design",
-                    projectLink: "https://portfolio.meisken.dev/"
-                },
-                {
-                    caption: "HALL OF FAME",
-                    videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a historical website with a 3D animation. And 4 unique pages for each hero stories with a lot of scroll animations.",
-                    projectLink: "https://portfolio.meisken.dev/"
+                    caption: "How moons slow retreat earth",
+                    videoSrc: "/assets/projectThumbnail/moon.jpg",
+                    description: "Here's the project I worked for South China Morning Post: HK, a storytelling page with image sequence and a mobile first design.",
+                    projectLink: "https://multimedia.scmp.com/native/infographics/article/3131059/how-moons-slow-retreat-earth/"
                 },
                 {
                     caption: "Todo calendar web app",
-                    videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design ",
-                    projectLink: "https://portfolio.meisken.dev/"
+                    videoSrc: "/assets/projectThumbnail/todo.jpg",
+                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design.",
+                    projectLink: "https://todo.meisken.dev/"
+                },
+                {
+                    caption: "chinese text converter",
+                    videoSrc: "/assets/projectThumbnail/tools.jpg",
+                    description: "It provides functions for Traditional/Simplified Chinese conversion, image-to-text conversion, capturing screenshots.",
+                    projectLink: "https://chromewebstore.google.com/detail/%E6%96%87%E5%AD%97%E8%BD%89%E6%8F%9B%E5%B7%A5%E5%85%B7/efdjngbfhfhmambhgcfbnmpggjgfalpg?authuser=5&hl=zh-TW"
                 }
             ],
         },
@@ -257,29 +268,35 @@ export const landingContents: LandingContents = {
             heading: "Projects",
             description: "I worked on these projects as both a developer and designer, writing code to build them while designing in Figma.",
             projects: [
-               {
+                {
+                    caption: "HALL OF FAME",
+                    videoSrc: "/assets/hall_of_fame.mp4",
+                    description: "Here’s a historical website with a 3D animation. And 4 unique pages for each hero stories with a lot of scroll animations.",
+                    projectLink: "https://hall.meisken.dev/"
+                },
+                {
                     caption: "Portfolio V1",
                     videoSrc: "/assets/hall_of_fame.mp4",
                     description: "Here’s a simple, clean and fast portfolio website I created in a long time ago. There’s some basic design and a bit animation.",
                     projectLink: "https://portfolio.meisken.dev/"
                 },
                 {
-                    caption: "how moons slow retreat earth",
+                    caption: "How moons slow retreat earth",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here's the project I worked for South China Morning Post: HK. It's a storytelling page with image sequence and a mobile first design",
-                    projectLink: "https://portfolio.meisken.dev/"
-                },
-                {
-                    caption: "HALL OF FAME",
-                    videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a historical website with a 3D animation, but presented with image sequence. And 4 page for each hero stories with a lot of scroll animation.",
-                    projectLink: "https://portfolio.meisken.dev/"
+                    description: "Here's the project I worked for South China Morning Post: HK, a storytelling page with image sequence and a mobile first design.",
+                    projectLink: "https://multimedia.scmp.com/native/infographics/article/3131059/how-moons-slow-retreat-earth/"
                 },
                 {
                     caption: "Todo calendar web app",
                     videoSrc: "/assets/hall_of_fame.mp4",
-                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design ",
-                    projectLink: "https://portfolio.meisken.dev/"
+                    description: "Here’s a demo web app that designed for time management with clean, Intuitive user experience, user friendly design.",
+                    projectLink: "https://todo.meisken.dev/"
+                },
+                {
+                    caption: "chinese text converter",
+                    videoSrc: "/assets/hall_of_fame.mp4",
+                    description: "It provides functions for Traditional/Simplified Chinese conversion, image-to-text conversion, capturing screenshots.",
+                    projectLink: "https://chromewebstore.google.com/detail/%E6%96%87%E5%AD%97%E8%BD%89%E6%8F%9B%E5%B7%A5%E5%85%B7/efdjngbfhfhmambhgcfbnmpggjgfalpg?authuser=5&hl=zh-TW"
                 }
             ],
         },
