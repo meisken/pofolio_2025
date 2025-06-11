@@ -24,12 +24,18 @@ export const metadataTags: Metadata = {
         }
     },
     category: 'portfolio',
+    metadataBase: new URL('https://www.meisken.dev'),
     openGraph: {
         siteName: "Ken Tang's portfolio 2025",
         type: "website",
         title: "Ken Tang's portfolio 2025",
         description: 'I am a web developer and designer who crafts dynamic websites that deliver interactive experiences far beyond mere static text and images.',
-        images: "/assets/thumbnail.png",
+        images: [{
+            url: "/assets/thumbnail.png",
+            type: "image/png",
+            width: "1920",
+            height: "1080",
+        }],
         url: "https://www.meisken.dev",
         locale: "Hong Kong",
         emails: "meiskena999@gmail.com",
