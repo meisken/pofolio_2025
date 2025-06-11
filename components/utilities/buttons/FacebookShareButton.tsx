@@ -9,11 +9,12 @@ import { CSSProperties, FC, MouseEventHandler, Ref } from "react";
 
 
 interface Props{
-    url: string,
+    url?: string,
     quote?: string,
     className?: string,
     style?: CSSProperties,
-    ref?: Ref<SVGSVGElement>
+    ref?: Ref<SVGSVGElement>,
+    share?: boolean
 }
 
 
@@ -21,20 +22,22 @@ interface Props{
 
 const FacebookShareButton: FC<Props> = ({
     className,
-    url,
+    url = "",
     quote,
     ref,
-    style
+    style,
+    share = false
 }) => {
     const handleOnClick:  MouseEventHandler<SVGSVGElement> = () => {
-        shareToSocialMedia(
-            "facebook",
-            {
-                u: url,
-                quote
-            }
-        )
-        
+        if(share){
+            shareToSocialMedia(
+                "facebook",
+                {
+                    u: url,
+                    quote
+                }
+            )
+        } 
     }
     return (
       

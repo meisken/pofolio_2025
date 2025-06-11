@@ -7,6 +7,10 @@ export type LandingContents = Record<SupportedLanguages,{
             description: string,
             backgroundVideo: {
                 videoSrc: string
+            },
+            contact: {
+                facebook: string,
+                twitter: string
             }
         },
         "what-i-do": {
@@ -124,6 +128,10 @@ export const landingContents: LandingContents = {
             description: "I’m Ken, a web developer and designer who build modern, visually appealing and clean websites.",
             backgroundVideo: {
                 videoSrc: "/assets/background.mp4"
+            },
+            contact: {
+                facebook: "https://m.me/ken32146",
+                twitter: "https://x.com/Ken_Tang_999"
             }
         },
         "what-i-do": {
@@ -240,6 +248,10 @@ export const landingContents: LandingContents = {
             description: "I’m a web developer and designer transform ideas into stunning digital experiences, build modern, visually appealing, clean websites.",
             backgroundVideo: {
                 videoSrc: "/assets/background.mp4"
+            },
+            contact: {
+                facebook: "https://m.me/ken32146",
+                twitter: "https://x.com/Ken_Tang_999"
             }
         },
         "what-i-do": {

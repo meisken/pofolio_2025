@@ -9,14 +9,15 @@ import { CSSProperties, FC, MouseEventHandler, Ref } from "react";
 
 
 interface Props{
-    url: string,
+    url?: string,
     hashtags?: string[],
     related?: string[],
     title?: string,
     via?: string,
     ref?:  Ref<SVGSVGElement>,
     className?: string,
-    style?: CSSProperties
+    style?: CSSProperties,
+    share?: boolean
 }
 
 
@@ -25,24 +26,28 @@ interface Props{
 const TwitterShareButton: FC<Props> = ({
     className = "h-[20px] w-[20px] cursor-pointer",
     ref,
-    url,
+    url = "",
     hashtags = [],
     related = [],
     title,
     via,
-    style
+    style,
+    share = false
 }) => {
     const handleOnClick:  MouseEventHandler<SVGSVGElement> = () => {
-        shareToSocialMedia(
-            "twitter",
-            {
-                url,
-                hashtags: hashtags.length > 0 ? hashtags.join(',') : undefined,
-                related: related.length > 0 ? related.join(',') : undefined,
-                text: title,
-                via
-            }
-        )
+        if(share){
+            shareToSocialMedia(
+                "twitter",
+                {
+                    url,
+                    hashtags: hashtags.length > 0 ? hashtags.join(',') : undefined,
+                    related: related.length > 0 ? related.join(',') : undefined,
+                    text: title,
+                    via
+                }
+            )
+        }
+
     }
     return (
 
