@@ -4,6 +4,7 @@ import { SupportedLanguages } from "./supportedLanguagesData"
 export type LandingContents = Record<SupportedLanguages,{
         hero: {
             headline: [string,string,string],
+            headlineTypingSpeed: number,
             description: string,
             backgroundVideo: {
                 videoSrc: string
@@ -125,6 +126,7 @@ export const landingContents: LandingContents = {
     "en": {
         hero: {
             headline: ["make it","creative","innovative"],
+            headlineTypingSpeed: 140,
             description: "I’m Ken, a web developer and designer who build modern, visually appealing and clean websites.",
             backgroundVideo: {
                 videoSrc: "/assets/background.mp4"
@@ -244,7 +246,8 @@ export const landingContents: LandingContents = {
     
     "zh": {
         hero: {
-            headline: ["modern","aesthetics","asd"],
+            headline: ["modern","讓創意飛揚","讓創新綻放"],
+            headlineTypingSpeed: 280,
             description: "I’m a web developer and designer transform ideas into stunning digital experiences, build modern, visually appealing, clean websites.",
             backgroundVideo: {
                 videoSrc: "/assets/background.mp4"

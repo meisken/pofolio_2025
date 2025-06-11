@@ -66,7 +66,7 @@ const Headline: FC = () => {
                     delay={0.7}
                 >
                     <TypingWriter 
-                        typingSpeed={140} 
+                        typingSpeed={landingContents[lang].hero.headlineTypingSpeed} 
                         text={[landingContents[lang].hero.headline[1],landingContents[lang].hero.headline[2]]} 
                         startingDelay={2000} 
                         defaultText={landingContents[lang].hero.headline[1]}
