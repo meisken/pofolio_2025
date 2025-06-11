@@ -6,21 +6,26 @@ import { langUrlQueryName, SupportedLanguages, supportedLanguages, userLastVisit
 import { setCookie } from '@/function/client/cookies';
 import { useOutsideAlerter } from '@/hooks/useOutsideAlerter';
 import { cn } from '@/lib/tailwind/cn';
-import Link from 'next/link';
 import { FC, MouseEvent, useRef, useState } from 'react'
 
 
 
 const LanguageToggle: FC = () => {
-
+ 
     const currentLang = useCurrentLanguages();
 
     const [active, setActive] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+  
 
-    const handleLinkOnClick = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, lang: SupportedLanguages) => {
+    const handleLinkOnClick = (e: MouseEvent<HTMLSpanElement, globalThis.MouseEvent>, lang: SupportedLanguages) => {
         setCookie(userLastVisitLanguageCookiesName, lang);
         setActive(false);
+        if(window !== undefined){
+            const { origin, pathname} = window.location;
+            window.location.href = `${origin}/${pathname}/?${langUrlQueryName}=${lang}`
+        }
+
     }
     const handleMenuToggle = () => {
         setActive(old => !old);
@@ -57,8 +62,8 @@ const LanguageToggle: FC = () => {
                                 key={`${lang}-${i}`} 
                         
                             >
-                                <Link 
-                                    href={`/?${langUrlQueryName}=${lang}`} 
+                                <span 
+                               
                                     onClick={(e) => handleLinkOnClick(e,lang)}
                                     className={
                                         cn(
@@ -81,7 +86,7 @@ const LanguageToggle: FC = () => {
                                     <HeadingXsThick>
                                         {lang}
                                     </HeadingXsThick>
-                                </Link>
+                                </span>
                             
                                 
                             </li>
