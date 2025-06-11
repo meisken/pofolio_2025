@@ -37,22 +37,16 @@ const slidesVariants: Variants = {
 
 const outVariants: Variants = {
     initial: { 
-    
+   
     },
     animate: { 
-    
-        transition: {
-            duration: 1.2,
-            ease: [0.33, 1, 0.68, 1],
-            times: [0, 0.4,0.9, 1]
-        }
     },
     exit: { 
-        clipPath: ["inset(0% 0% 0% 0%)","inset(0% 0% 0% 0%)","inset(0% 0% 101% 0%)","inset(0% 0% 101% 0%)"],
+        opacity: [1,1,0,0],
         transition: {
-            duration: 1.2,
-            ease: [0.33, 1, 0.68, 1],
-            times: [0, 0.4,0.9, 1]
+            duration: 1.5,
+            ease: [0.45, 0, 0.55, 1],
+            times: [0, 0.4,0.6, 1]
         }
     },
 
