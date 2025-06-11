@@ -9,6 +9,7 @@ interface Props{
     width?: number,
     height?: number,
     fill?: boolean,
+    sizes?: string,
 
     className?: string,
     style?: CSSProperties,
@@ -18,7 +19,7 @@ interface Props{
     imageStyle?: CSSProperties,
 }
 
-const HoverParallaxImage: FC<Props> = ({src, alt, style, className, ref ,fill, height, width,imageClassName,imageStyle}) => {
+const HoverParallaxImage: FC<Props> = ({src, alt, style, className, ref ,fill, height, width,imageClassName,imageStyle,sizes}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const onMouseMoveHandler: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -73,6 +74,7 @@ const HoverParallaxImage: FC<Props> = ({src, alt, style, className, ref ,fill, h
                 ref={imageRef}
                 src={src}
                 alt={alt}
+                sizes={sizes}
                 className={cn('object-cover scale-120 inline-block',imageClassName)}
                 style={{
                     transition: "transform 0.15s linear",
