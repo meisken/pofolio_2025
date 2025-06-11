@@ -7,6 +7,7 @@ import SpacingLgContainer from '@/components/utilities/containers/SpacingLgConta
 import { landingContents } from '@/contents/landingContents';
 import { useCurrentLanguages } from '@/contents/languageSupportHooks';
 import { useUrl } from '@/hooks/useUrl';
+import Link from 'next/link';
 import { FC } from 'react'
 
 
@@ -44,7 +45,11 @@ const ShareButtonsContainer: FC = () => {
                     w-full
                 '
             >
-                <UnderlineButton>{landingContents[lang]['lets-talk-button']}</UnderlineButton>
+                <Link href={landingContents[lang]['lets-talk-button'].link}>
+                    <UnderlineButton>
+                        {landingContents[lang]['lets-talk-button'].name}
+                    </UnderlineButton>
+                </Link>
                 <div className='flex gap-10'>
                     <FacebookShareButton url={url ?? ""} />
                     <TwitterShareButton url={url ?? ""}  />

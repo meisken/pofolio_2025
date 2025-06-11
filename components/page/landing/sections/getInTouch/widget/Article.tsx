@@ -2,6 +2,7 @@ import UnderlineButton from '@/components/utilities/buttons/UnderlineButton';
 import ArticleContainer from '@/components/utilities/containers/ArticleContainer';
 import { landingContents } from '@/contents/landingContents';
 import { useCurrentLanguages } from '@/contents/languageSupportHooks';
+import Link from 'next/link';
 import { FC } from 'react'
 
 
@@ -30,9 +31,11 @@ const Article: FC = () => {
                 )}
             />
             <div className='w-fit'>
-                <UnderlineButton>
-                    {landingContents[lang]['lets-talk-button']}
-                </UnderlineButton>
+                <Link href={landingContents[lang]['lets-talk-button'].link}>
+                    <UnderlineButton>
+                        {landingContents[lang]['lets-talk-button'].name}
+                    </UnderlineButton>
+                </Link>
             </div>
         </div>
 

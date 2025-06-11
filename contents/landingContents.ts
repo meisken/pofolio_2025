@@ -105,7 +105,10 @@ export type LandingContents = Record<SupportedLanguages,{
             "scroll": string,
             "hover": string
         },
-        "lets-talk-button": string
+        "lets-talk-button": {
+            name: string,
+            link: string
+        }
 }>
 
 export const landingContents: LandingContents = {
@@ -214,7 +217,10 @@ export const landingContents: LandingContents = {
             "scroll": "scroll down",
             "hover": "hover me"
         },
-        "lets-talk-button": "Let’s Talk"
+        "lets-talk-button": {
+            name: "Let’s Talk",
+            link: "https://www.upwork.com/freelancers/~01698d1c0db877b32d"
+        }
     },
     
     "zh": {
@@ -322,6 +328,9 @@ export const landingContents: LandingContents = {
             "scroll": "scroll down",
             "hover": "hover me"
         },
-        "lets-talk-button": "Let’s Talk"
+        "lets-talk-button": {
+            name: "Let’s Talk",
+            link: "https://www.upwork.com/freelancers/~01698d1c0db877b32d"
+        }
     }
 } as const
