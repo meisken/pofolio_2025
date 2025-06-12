@@ -75,6 +75,7 @@ const HoverParallaxImage: FC<Props> = ({src, alt, style, className, ref ,fill, h
                 src={src}
                 alt={alt}
                 sizes={sizes}
+                priority
                 className={cn('object-cover scale-120 inline-block',imageClassName)}
                 style={{
                     transition: "transform 0.15s linear",

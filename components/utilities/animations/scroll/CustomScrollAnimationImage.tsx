@@ -127,6 +127,7 @@ const CustomScrollAnimationImage: FC<Props> = ({
             alt={alt}
             sizes={sizes}
             fill
+            priority
             className={cn("object-cover",className)}
             style={{
                 ...styleFrom,

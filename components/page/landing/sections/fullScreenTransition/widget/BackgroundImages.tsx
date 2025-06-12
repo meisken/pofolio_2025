@@ -50,6 +50,7 @@ const BackgroundImages: FC<Props> = ({containerRef,pinContainerRef}) => {
                     src={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                     alt={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                     fill
+                    priority
                     className=' grayscale-100 object-cover'
                 />
             </CustomScrollAnimation>
@@ -73,6 +74,7 @@ const BackgroundImages: FC<Props> = ({containerRef,pinContainerRef}) => {
                     src={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                     alt={landingContents[lang]['full-screen-transition'].imgSrcs[0]}
                     fill
+                    priority
                     className='object-cover'
                 />
             </CustomScrollAnimation>
@@ -82,6 +84,7 @@ const BackgroundImages: FC<Props> = ({containerRef,pinContainerRef}) => {
                 src={landingContents[lang]['full-screen-transition'].imgSrcs[1]}
                 alt={landingContents[lang]['full-screen-transition'].imgSrcs[1]}
                 fill
+                priority
                 className=' z-[1] object-cover'
             />
         

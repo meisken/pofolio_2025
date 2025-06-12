@@ -89,6 +89,7 @@ const Article: FC<Props> = ({containerRef}) => {
                                             width={1274}
                                             height={826}
                                             className='w-full object-cover'
+                                            priority
                                         />
                                     </CustomScrollAnimation>
                                 </ThreeDHoverCard>
