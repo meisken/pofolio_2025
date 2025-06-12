@@ -41,8 +41,7 @@ const ServiceList: FC= () => {
                                 border-b-white/50 
                                 py-6
                                 w-full
-                                xs:grid-cols-1
-                                sm:px-2
+                          
                             '
                         >
                     
@@ -52,6 +51,8 @@ const ServiceList: FC= () => {
                                         grid
                                         grid-cols-2
                                         gap-[16px]
+                                        xs:grid-cols-1
+                                        sm:px-2
                                     '
                                     styleFrom={{
                                         opacity: 0,
